@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معاينة خلفيات الفئات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #4A6572 0%, #344955 55%, #232F34 100%);
+      --card: #ffffff;
+      --ink: #232F34;
+      --accent: #F9AA33;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      padding: 28px 16px 40px;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    h1 {
+      margin: 0 0 8px;
+      font-family: 'El Messiri', cursive;
+      font-size: 2rem;
+    }
+    p { margin: 0 0 22px; opacity: 0.92; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      position: relative;
+      min-height: 180px;
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+    .thumb {
+      height: 120px;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.22), transparent 48%),
+        linear-gradient(160deg, rgba(255,255,255,0.14), transparent 55%);
+    }
+    .name {
+      padding: 12px 12px 8px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .swatch {
+      padding: 0 12px 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #4d5f69;
+      direction: ltr;
+    }
+    .upcoming {
+      filter: grayscale(0.4);
+      opacity: 0.92;
+    }
+    .upcoming .thumb {
+      filter: blur(1.2px);
+    }
+    .badge {
+      position: absolute;
+      top: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(35,47,52,0.8);
+      color: #fff;
+      border: 1px solid rgba(249,170,51,0.9);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>معاينة الخلفيات قبل التطبيق</h1>
+    <p>هذي مجرد معاينة. ما تم التعديل على الصفحة الأساسية.</p>
+
+    <div class="grid">
+      <div class="card" style="--c1:#2F3F47;--c2:#F9AA33"><div class="thumb">مسرحيات</div><div class="name">مسرحيات</div><div class="swatch">#2F3F47 → #F9AA33</div></div>
+      <div class="card" style="--c1:#3A5662;--c2:#E8A94A"><div class="thumb">أغاني خليجية</div><div class="name">أغاني خليجية</div><div class="swatch">#3A5662 → #E8A94A</div></div>
+      <div class="card" style="--c1:#344955;--c2:#F9AA33"><div class="thumb">أغاني عربية</div><div class="name">أغاني عربية</div><div class="swatch">#344955 → #F9AA33</div></div>
+      <div class="card" style="--c1:#3E535E;--c2:#D9972F"><div class="thumb">أفلام عربية</div><div class="name">أفلام عربية</div><div class="swatch">#3E535E → #D9972F</div></div>
+      <div class="card" style="--c1:#4A6572;--c2:#D48F25"><div class="thumb">مسلسلات خليجية</div><div class="name">مسلسلات خليجية</div><div class="swatch">#4A6572 → #D48F25</div></div>
+      <div class="card" style="--c1:#384D58;--c2:#F2A637"><div class="thumb">مسلسلات عربية</div><div class="name">مسلسلات عربية</div><div class="swatch">#384D58 → #F2A637</div></div>
+
+      <div class="card upcoming" style="--c1:#4A6572;--c2:#F9AA33"><div class="thumb">أغاني أجنبية</div><div class="badge">قريبًا</div><div class="name">أغاني أجنبية</div><div class="swatch">#4A6572 → #F9AA33</div></div>
+      <div class="card upcoming" style="--c1:#2B3A42;--c2:#F9AA33"><div class="thumb">أفلام أجنبية</div><div class="badge">قريبًا</div><div class="name">أفلام أجنبية</div><div class="swatch">#2B3A42 → #F9AA33</div></div>
+      <div class="card upcoming" style="--c1:#324752;--c2:#F9AA33"><div class="thumb">مسلسلات أجنبية</div><div class="badge">قريبًا</div><div class="name">مسلسلات أجنبية</div><div class="swatch">#324752 → #F9AA33</div></div>
+    </div>
+  </div>
+</body>
+</html>
