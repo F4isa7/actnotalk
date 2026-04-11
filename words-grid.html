@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مربعات الكلمات | ActNoTalk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #1c2a30;
+        --ink-soft: #4a6572;
+        --accent: #f4a23a;
+        --bg: #f5f6f7;
+        --card: #ffffff;
+        --shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+        --radius: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Tajawal", system-ui, sans-serif;
+        background: linear-gradient(160deg, #f8efe3 0%, #eef3f6 40%, #f7f7f7 100%);
+        color: var(--ink);
+        min-height: 100vh;
+        padding: 28px 16px 40px;
+      }
+
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 18px 22px;
+        box-shadow: var(--shadow);
+        margin-bottom: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      h1 {
+        font-family: "El Messiri", cursive;
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 66px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+      }
+
+      .counter {
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+        .card {
+          min-height: 58px;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>مربعات الكلمات</h1>
+        <p class="subtitle">عرض الكلمات الحالية في مربعات واضحة.</p>
+        <div class="counter" id="counter"></div>
+      </header>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <script>
+      const words = [
+        "اختطاف",
+        "الحشاشين",
+        "الزير سالم",
+        "العاصوف",
+        "العظماء السبعة",
+        "العيال كبرت",
+        "اميمة في دار الأيتام",
+        "باب الحارة",
+        "بتوحشيني",
+        "بنات الثانوية",
+        "بيت العنكبوت",
+        "بين الماضي والحب",
+        "ثانوية النسيم",
+        "جمان",
+        "حب بين السطور",
+        "خالتي قماشة",
+        "خريف القلب",
+        "خمس بنات",
+        "دفعة بيروت",
+        "رشاش",
+        "رقية وسبيكة",
+        "ساهر الليل",
+        "سكة سفر",
+        "سيرة الحب",
+        "شارع الاعشى",
+        "صحاك الشوق",
+        "صفحة بيضاء",
+        "طاش ماطاش",
+        "عرش دراكولا",
+        "عمرو دياب",
+        "عندما يكتمل القمر",
+        "فرقة ناجي عطالله",
+        "فضل شاكر",
+        "فهد البطل",
+        "فين لياليك",
+        "ليلة زفته",
+        "مخرج 7",
+        "مدرسة المشاغبين",
+        "مذكرات عائلية جدا",
+        "معقول",
+        "ملحق بنات",
+        "ممنوع التجول",
+        "منهو ولدنا",
+        "يا حياة الروح",
+        "يا غايب",
+        "يس عبدالملك",
+        "يوميات رجل عانس"
+      ];
+
+      const grid = document.getElementById("grid");
+      const counter = document.getElementById("counter");
+
+      words.forEach((word) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = word;
+        grid.appendChild(card);
+      });
+
+      counter.textContent = `عدد الكلمات: ${words.length}`;
+    </script>
+  </body>
+</html>
