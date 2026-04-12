@@ -996,6 +996,21 @@
             border: none;
             padding: 0;
         }
+        .legal-mini-modal {
+            max-width: 360px;
+        }
+        .legal-mini-modal .modal-header h2 {
+            font-size: 1.15rem;
+        }
+        .legal-mini-body {
+            padding: 1rem 1.1rem 1.15rem;
+        }
+        .legal-mini-body p {
+            margin: 0;
+            line-height: 1.9;
+            color: var(--accent-color);
+            font-size: 0.96rem;
+        }
 
         .server-settings {
             margin-bottom: 2rem;
@@ -2188,11 +2203,11 @@
             </button>
         </div>
         <div class="legal-links">
-            <a class="legal-link" href="privacy/">
+            <a class="legal-link" href="privacy/" data-legal-modal="privacy">
                 <i class="fas fa-shield-halved"></i>
                 سياسة الخصوصية
             </a>
-            <a class="legal-link" href="contact/">
+            <a class="legal-link" href="contact/" data-legal-modal="contact">
                 <i class="fas fa-envelope"></i>
                 تواصل معنا
             </a>
@@ -2328,6 +2343,20 @@
                         </div>
                     </div>
                 </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="legalModal">
+        <div class="modal-content legal-mini-modal">
+            <div class="modal-header">
+                <h2 id="legalModalTitle">معلومة</h2>
+                <button class="modal-close" id="legalModalClose" type="button" aria-label="إغلاق">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body legal-mini-body">
+                <p id="legalModalText"></p>
             </div>
         </div>
     </div>
@@ -2815,6 +2844,11 @@
         // About Modal Elements
         const aboutOpenBtn = document.getElementById('aboutOpenBtn');
         const aboutModal = document.getElementById('aboutModal');
+        const legalLinks = document.querySelectorAll('[data-legal-modal]');
+        const legalModal = document.getElementById('legalModal');
+        const legalModalTitle = document.getElementById('legalModalTitle');
+        const legalModalText = document.getElementById('legalModalText');
+        const legalModalClose = document.getElementById('legalModalClose');
         const aboutClose = document.getElementById('aboutClose');
         const TIMER_SETTINGS_KEY = 'ActNoTalk_timer_settings';
         const GAME_COMPLETED_KEY = 'ActNoTalk_game_completed';
@@ -3692,6 +3726,51 @@
                 }
             });
         }
+
+        const legalModalContent = {
+            privacy: {
+                title: 'سياسة الخصوصية',
+                text: 'الموقع لا يطلب حسابًا، ويستخدم التخزين المحلي فقط لحفظ إعدادات اللعب مثل المؤقت والفئات واستئناف الجلسة. وقد تتم إضافة خدمات إعلانية لاحقًا مثل Google AdSense.'
+            },
+            contact: {
+                title: 'تواصل معنا',
+                text: 'هذه النافذة مخصصة للتواصل العام وملاحظات الاستخدام والاستفسارات المتعلقة بالموقع أو بالإعلانات مستقبلًا، وسيتم تحديث وسيلة التواصل الرسمية عند اكتمال التجهيز.'
+            }
+        };
+
+        function openLegalModal(type) {
+            const content = legalModalContent[type];
+            if (!content || !legalModal || !legalModalTitle || !legalModalText) return;
+            legalModalTitle.textContent = content.title;
+            legalModalText.textContent = content.text;
+            legalModal.classList.add('active');
+        }
+
+        function closeLegalModal() {
+            if (!legalModal) return;
+            legalModal.classList.remove('active');
+        }
+
+        legalLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const type = link.dataset.legalModal;
+                if (!type) return;
+                event.preventDefault();
+                openLegalModal(type);
+            });
+        });
+
+        if (legalModalClose) {
+            legalModalClose.addEventListener('click', closeLegalModal);
+        }
+
+        if (legalModal) {
+            legalModal.addEventListener('click', (event) => {
+                if (event.target === legalModal) {
+                    closeLegalModal();
+                }
+            });
+        }
         
         // Server Selection Event Listeners
         if (serverOptions.length) {
@@ -3768,6 +3847,8 @@
             if (e.key === 'Escape') {
                 if (aboutModal && aboutModal.classList.contains('active')) {
                     aboutModal.classList.remove('active');
+                } else if (legalModal && legalModal.classList.contains('active')) {
+                    closeLegalModal();
                 } else if (settingsModal && settingsModal.classList.contains('active')) {
                     settingsModal.classList.remove('active');
                 } else {

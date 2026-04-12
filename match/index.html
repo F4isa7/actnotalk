@@ -158,6 +158,52 @@
       color: #F9AA33;
       border-color: rgba(249, 170, 51, 0.35);
     }
+    .legal-mini-modal {
+      background: #ffffff;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+      color: #232F34;
+      overflow: hidden;
+    }
+    .legal-mini-header {
+      background: #4A6572;
+      color: #fff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .legal-mini-title {
+      margin: 0;
+      font-family: 'El Messiri', sans-serif;
+      font-size: 1.1rem;
+    }
+    .legal-mini-close {
+      appearance: none;
+      border: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .legal-mini-body {
+      padding: 16px;
+    }
+    .legal-mini-body p {
+      margin: 0;
+      line-height: 1.9;
+      color: #344955;
+      font-size: 0.95rem;
+      text-align: right;
+    }
     @media (max-width: 1024px) {
       .side-ad { display: none; }
     }
@@ -1834,14 +1880,28 @@
     </div>
   </div>
   <div class="legal-links-bar">
-    <a class="legal-link" href="privacy/">
+    <a class="legal-link" href="privacy/" data-legal-modal="privacy">
       <i class="fas fa-shield-halved"></i>
       سياسة الخصوصية
     </a>
-    <a class="legal-link" href="contact/">
+    <a class="legal-link" href="contact/" data-legal-modal="contact">
       <i class="fas fa-envelope"></i>
       تواصل معنا
     </a>
+  </div>
+
+  <div class="modal-overlay" id="legalModal" aria-hidden="true">
+    <div class="legal-mini-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+      <div class="legal-mini-header">
+        <h2 class="legal-mini-title" id="legalModalTitle">معلومة</h2>
+        <button class="legal-mini-close" type="button" id="legalModalClose" aria-label="إغلاق">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="legal-mini-body">
+        <p id="legalModalText"></p>
+      </div>
+    </div>
   </div>
 
   <div class="modal-overlay" id="wordModal" aria-hidden="true">
@@ -2116,6 +2176,11 @@
     const rulesConfirm = document.getElementById('rulesConfirm');
     const rulesTabs = document.querySelectorAll('.rules-tab');
     const rulesPanels = document.querySelectorAll('.rules-panel');
+    const legalLinks = Array.from(document.querySelectorAll('[data-legal-modal]'));
+    const legalModal = document.getElementById('legalModal');
+    const legalModalTitle = document.getElementById('legalModalTitle');
+    const legalModalText = document.getElementById('legalModalText');
+    const legalModalClose = document.getElementById('legalModalClose');
     const resultsOverlay = document.getElementById('resultsOverlay');
     const resultsBadge = document.getElementById('resultsBadge');
     const resultsTitle = document.getElementById('resultsTitle');
@@ -3235,6 +3300,32 @@
       rulesModal.setAttribute('aria-hidden', 'true');
     }
 
+    const legalModalContent = {
+      privacy: {
+        title: 'سياسة الخصوصية',
+        text: 'الموقع لا يطلب حسابًا، ويستخدم التخزين المحلي فقط لحفظ إعدادات اللعب مثل المؤقت والفئات واستئناف الجلسة. وقد تتم إضافة خدمات إعلانية لاحقًا مثل Google AdSense.'
+      },
+      contact: {
+        title: 'تواصل معنا',
+        text: 'هذه النافذة مخصصة للتواصل العام وملاحظات الاستخدام والاستفسارات المتعلقة بالموقع أو بالإعلانات مستقبلًا، وسيتم تحديث وسيلة التواصل الرسمية عند اكتمال التجهيز.'
+      }
+    };
+
+    function openLegalModal(type) {
+      const content = legalModalContent[type];
+      if (!content || !legalModal || !legalModalTitle || !legalModalText) return;
+      legalModalTitle.textContent = content.title;
+      legalModalText.textContent = content.text;
+      legalModal.classList.add('active');
+      legalModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLegalModal() {
+      if (!legalModal) return;
+      legalModal.classList.remove('active');
+      legalModal.setAttribute('aria-hidden', 'true');
+    }
+
     function setRulesTab(tabId) {
       rulesTabs.forEach(tab => {
         const isActive = tab.dataset.tab === tabId;
@@ -3539,6 +3630,20 @@
         if (tab.dataset.tab) setRulesTab(tab.dataset.tab);
       });
     });
+    legalLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const type = link.dataset.legalModal;
+        if (!type) return;
+        event.preventDefault();
+        openLegalModal(type);
+      });
+    });
+    if (legalModalClose) legalModalClose.addEventListener('click', closeLegalModal);
+    if (legalModal) {
+      legalModal.addEventListener('click', (event) => {
+        if (event.target === legalModal) closeLegalModal();
+      });
+    }
 
 
     function handleCorrect() {
