@@ -815,7 +815,7 @@
       display: grid;
       grid-template-columns: repeat(var(--board-cols), minmax(0, 1fr));
       grid-auto-rows: minmax(0, 1fr);
-      gap: 10px;
+      gap: 12px;
       position: relative;
       z-index: 1;
       min-height: 0;
@@ -826,18 +826,11 @@
       flex: 5 1 0%;
       height: var(--grid-max-h);
       max-height: var(--grid-max-h);
-      padding: 12px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 38px rgba(0,0,0,0.18);
-      overflow: hidden;
     }
     .tile {
-      background: linear-gradient(180deg, rgba(67, 93, 105, 0.95), rgba(52, 73, 85, 0.96));
-      border-radius: 18px;
-      padding: 10px;
+      background: #435D69;
+      border-radius: 14px;
+      padding: 12px;
       min-height: 0;
       font-size: 1.5rem;
       position: relative;
@@ -847,25 +840,22 @@
       text-align: center;
       font-weight: 700;
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 16px rgba(15,23,32,0.16);
+      border: 2px solid #e8ecef;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       cursor: pointer;
     }
     .tile-content {
       position: absolute;
       inset: 0;
-      padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .tile-number {
-      font-size: clamp(1.45rem, 3vw, 2.25rem);
+      font-size: 2.6rem;
       font-weight: 900;
       color: #fff;
       z-index: 2;
-      line-height: 1;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
     .tile-brand {
       position: absolute;
@@ -876,7 +866,7 @@
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      opacity: 0.05;
+      opacity: 0.07;
       justify-content: center;
     }
     .tile-brand .logo-section {
