@@ -1202,24 +1202,20 @@
         padding: 0 12px 20px;
       }
       .topbar {
+        position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto auto;
-        grid-template-areas:
-          ". turn actions"
-          "right . left";
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px 8px;
         padding: 10px 12px 14px;
-        align-items: center;
+        align-items: stretch;
       }
       .center-title {
-        grid-area: turn;
-        width: auto;
-        min-height: auto;
-        padding-right: 0;
-        padding-left: 0;
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 44px;
+        padding-right: 56px;
+        padding-left: 56px;
         gap: 4px;
-        justify-self: center;
-        align-self: center;
       }
       .team-left-wrap {
         display: contents;
@@ -1230,12 +1226,6 @@
         max-width: none;
         order: initial;
       }
-      #teamRight {
-        grid-area: right;
-      }
-      #teamLeft {
-        grid-area: left;
-      }
       .turn-badge {
         width: fit-content;
         max-width: 100%;
@@ -1243,7 +1233,7 @@
         justify-content: center;
         font-size: 0.95rem;
         padding: 10px 16px;
-        margin-inline: 0;
+        margin-inline: auto;
         border-radius: 16px;
       }
       .team-name {
@@ -1265,12 +1255,12 @@
         border-radius: 11px;
       }
       .topbar-actions {
-        grid-area: actions;
-        position: static;
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        left: auto;
         display: flex;
         align-items: center;
-        justify-self: end;
-        align-self: center;
       }
       .team-panel {
         flex-direction: row;
@@ -1440,17 +1430,13 @@
         border-radius: 14px;
       }
       .topbar {
-        grid-template-columns: minmax(0, 1fr) auto auto;
-        grid-template-areas:
-          ". turn actions"
-          "right . left";
         gap: 8px 7px;
         padding: 9px 10px 12px;
       }
       .center-title {
-        min-height: auto;
-        padding-right: 0;
-        padding-left: 0;
+        min-height: 40px;
+        padding-right: 48px;
+        padding-left: 48px;
         gap: 4px;
       }
       .turn-badge {
