@@ -1195,16 +1195,16 @@
         position: relative;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px 10px;
-        padding: 12px 14px 16px;
+        gap: 10px 8px;
+        padding: 10px 12px 14px;
         align-items: stretch;
       }
       .center-title {
         grid-column: 1 / -1;
         order: 1;
         width: 100%;
-        padding-inline: 62px 10px;
-        gap: 8px;
+        padding-inline: 56px 8px;
+        gap: 6px;
       }
       .team-left-wrap {
         display: contents;
@@ -1217,34 +1217,34 @@
       .turn-badge {
         width: fit-content;
         max-width: 100%;
-        min-width: min(220px, 100%);
+        min-width: min(212px, 100%);
         justify-content: center;
-        font-size: 1rem;
-        padding: 11px 16px;
+        font-size: 0.95rem;
+        padding: 10px 14px;
         margin-inline: auto;
-        border-radius: 18px;
+        border-radius: 16px;
       }
       .team-name {
         width: 100%;
-        font-size: 0.95rem;
+        font-size: 0.88rem;
         white-space: normal;
         overflow-wrap: anywhere;
-        line-height: 1.25;
-        text-align: start;
+        line-height: 1.2;
+        text-align: center;
       }
       .team-score {
-        align-self: flex-end;
-        min-width: 42px;
-        font-size: 1rem;
-        padding: 6px 12px;
-        border-radius: 12px;
+        align-self: center;
+        min-width: 40px;
+        font-size: 0.98rem;
+        padding: 6px 10px;
+        border-radius: 11px;
       }
       .topbar-actions {
         grid-column: 1 / -1;
         order: 2;
         position: absolute;
-        top: 12px;
-        inset-inline-start: 14px;
+        top: 10px;
+        inset-inline-start: 12px;
       }
       #teamRight {
         order: 3;
@@ -1254,12 +1254,12 @@
       }
       .team-panel {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
-        gap: 12px;
-        min-height: 98px;
-        padding: 12px 12px 10px;
-        border-radius: 22px;
+        gap: 10px;
+        min-height: 84px;
+        padding: 10px 10px 9px;
+        border-radius: 18px;
       }
       .action-inline {
         flex: 1;
@@ -1420,34 +1420,42 @@
         border-radius: 14px;
       }
       .topbar {
-        gap: 10px 8px;
-        padding: 10px 10px 14px;
+        gap: 8px 7px;
+        padding: 9px 10px 12px;
       }
       .center-title {
-        padding-inline: 56px 6px;
-        gap: 8px;
+        padding-inline: 52px 4px;
+        gap: 6px;
       }
       .turn-badge {
         min-width: 0;
         width: fit-content;
-        font-size: 0.92rem;
-        padding: 10px 14px;
+        font-size: 0.88rem;
+        padding: 9px 12px;
       }
       .team-panel {
-        padding: 10px 10px 9px;
-        min-height: 88px;
-        border-radius: 18px;
+        padding: 9px 9px 8px;
+        min-height: 78px;
+        border-radius: 16px;
       }
       .action-btn {
         font-size: 0.95rem;
       }
       .settings-icon-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
       }
       .center-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+      .team-name {
+        font-size: 0.82rem;
+      }
+      .team-score {
+        min-width: 36px;
+        font-size: 0.9rem;
+        padding: 5px 9px;
       }
       main {
         padding: 0 10px 18px;
