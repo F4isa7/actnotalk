@@ -2612,11 +2612,7 @@
             if (!categoriesGrid) return;
             categoriesGrid.innerHTML = '';
 
-            const regularCategories = categories.filter(category => !UPCOMING_CATEGORY_IDS.has(category.id));
-            const upcomingCategories = categories.filter(category => UPCOMING_CATEGORY_IDS.has(category.id));
-            const orderedCategories = [...regularCategories, ...upcomingCategories];
-
-            orderedCategories.forEach(category => {
+            categories.forEach(category => {
                 const isUpcoming = UPCOMING_CATEGORY_IDS.has(category.id);
                 const card = document.createElement('div');
                 card.className = `category-card${isUpcoming ? ' upcoming' : ''}`;
