@@ -1180,7 +1180,7 @@
 
     @media (max-width: 768px) {
       :root {
-        --grid-max-h: min(60vh, calc(100dvh - 206px));
+        --grid-max-h: none;
       }
       .banner-ad {
         height: 60px;
@@ -1193,55 +1193,73 @@
       }
       .topbar {
         position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px 8px;
-        padding: 10px 12px 14px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 10px;
+        padding: 12px 14px 16px;
+        align-items: stretch;
       }
       .center-title {
+        grid-column: 1 / -1;
         order: 1;
         width: 100%;
-        padding-inline: 54px;
-        gap: 10px;
+        padding-inline: 62px 10px;
+        gap: 8px;
       }
       .team-left-wrap {
         display: contents;
       }
       #teamRight,
       #teamLeft {
-        flex: 1 1 calc(50% - 6px);
-        width: calc(50% - 6px);
+        width: 100%;
         max-width: none;
       }
       .turn-badge {
-        min-width: min(210px, 100%);
+        width: fit-content;
+        max-width: 100%;
+        min-width: min(220px, 100%);
         justify-content: center;
         font-size: 1rem;
-        padding: 10px 12px;
+        padding: 11px 16px;
+        margin-inline: auto;
+        border-radius: 18px;
       }
       .team-name {
-        font-size: 1rem;
+        width: 100%;
+        font-size: 0.95rem;
         white-space: normal;
         overflow-wrap: anywhere;
-        line-height: 1.35;
+        line-height: 1.25;
+        text-align: start;
       }
       .team-score {
-        min-width: 38px;
+        align-self: flex-end;
+        min-width: 42px;
         font-size: 1rem;
+        padding: 6px 12px;
+        border-radius: 12px;
       }
       .topbar-actions {
+        grid-column: 1 / -1;
         order: 2;
         position: absolute;
-        top: 10px;
-        inset-inline-start: 12px;
+        top: 12px;
+        inset-inline-start: 14px;
       }
       #teamRight {
         order: 3;
       }
       #teamLeft {
         order: 4;
+      }
+      .team-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 98px;
+        padding: 12px 12px 10px;
+        border-radius: 22px;
       }
       .action-inline {
         flex: 1;
@@ -1251,7 +1269,9 @@
       .rules-launch-btn {
         width: 100%;
         justify-content: center;
-        padding: 10px 14px;
+        min-height: 56px;
+        padding: 12px 18px;
+        border-radius: 999px;
       }
       .rules-modal-card {
         max-height: 88vh;
@@ -1275,18 +1295,31 @@
       }
       .board {
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-        padding: 8px;
-        border-radius: 24px;
+        grid-auto-rows: auto;
+        gap: 10px;
+        padding: 0;
+        height: auto;
+        max-height: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        overflow: visible;
       }
       .tile {
         min-height: 0;
-        padding: 7px 8px;
-        border-radius: 16px;
+        aspect-ratio: 1 / 1;
+        padding: 0;
+        border-radius: 18px;
         font-size: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 18px rgba(15, 23, 32, 0.14);
+      }
+      .tile-content {
+        padding: 0;
       }
       .tile-number {
-        font-size: clamp(1.2rem, 5vw, 1.75rem);
+        font-size: clamp(1.35rem, 5.6vw, 1.95rem);
       }
       .modal-overlay {
         padding: 12px;
@@ -1375,7 +1408,7 @@
 
     @media (max-width: 560px) {
       :root {
-        --grid-max-h: min(52vh, calc(100dvh - 210px));
+        --grid-max-h: none;
       }
       .bg-watermark {
         display: none;
@@ -1387,20 +1420,22 @@
         border-radius: 14px;
       }
       .topbar {
-        gap: 10px;
-        padding: 10px;
+        gap: 10px 8px;
+        padding: 10px 10px 14px;
       }
       .center-title {
+        padding-inline: 56px 6px;
         gap: 8px;
       }
       .turn-badge {
         min-width: 0;
-        width: 100%;
-        font-size: 0.95rem;
+        width: fit-content;
+        font-size: 0.92rem;
+        padding: 10px 14px;
       }
       .team-panel {
-        padding: 8px 10px;
-        min-height: 50px;
+        padding: 10px 10px 9px;
+        min-height: 88px;
         border-radius: 18px;
       }
       .action-btn {
@@ -1414,23 +1449,21 @@
       .center-title {
         font-size: 1.1rem;
       }
-      .turn-badge {
-        font-size: 0.95rem;
-      }
       main {
         padding: 0 10px 18px;
       }
       .board {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 8px;
-        padding: 7px;
+        padding: 0;
       }
       .tile {
         min-height: 0;
-        padding: 6px;
+        padding: 0;
+        border-radius: 16px;
       }
       .tile-number {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
       }
       .rules-tabs {
         padding: 8px 10px;
