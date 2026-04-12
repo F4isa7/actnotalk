@@ -172,8 +172,36 @@
     .team-left-wrap {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 12px;
       justify-content: flex-start;
+    }
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .settings-icon-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f9aa33 0%, #ffd27a 100%);
+      color: #232F34;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(249, 170, 51, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-size: 1.2rem;
+    }
+    .settings-icon-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(249, 170, 51, 0.32);
+    }
+    .settings-icon-btn:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.35);
+      outline-offset: 3px;
     }
     .team-score {
       font-size: 1.1rem;
@@ -619,6 +647,142 @@
       0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.85; }
       50% { transform: translateY(-10px) rotate(8deg); opacity: 1; }
     }
+    .game-settings-card {
+      max-width: 430px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      text-align: right;
+    }
+    .game-settings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .game-settings-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'El Messiri', cursive;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .game-settings-close {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(74, 101, 114, 0.12);
+      color: #344955;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .game-settings-close:hover {
+      background: rgba(74, 101, 114, 0.2);
+    }
+    .game-settings-body {
+      display: grid;
+      gap: 16px;
+    }
+    .game-settings-section {
+      border: 1px solid rgba(74, 101, 114, 0.18);
+      border-radius: 20px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(249, 170, 51, 0.1), rgba(255, 255, 255, 0.92));
+      display: grid;
+      gap: 14px;
+    }
+    .game-settings-section h3 {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #232F34;
+      font-size: 1.1rem;
+    }
+    .timer-mode-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .timer-mode-label {
+      font-weight: 700;
+      color: #344955;
+    }
+    .settings-toggle-group {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(52, 73, 85, 0.08);
+      border-radius: 999px;
+      padding: 5px;
+    }
+    .settings-toggle-btn {
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: #344955;
+      padding: 8px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .settings-toggle-btn.active {
+      background: #344955;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .duration-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .duration-option {
+      border: 1px solid rgba(52, 73, 85, 0.18);
+      border-radius: 16px;
+      background: #fff;
+      color: #232F34;
+      padding: 12px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .duration-option.active {
+      border-color: rgba(249, 170, 51, 0.88);
+      background: linear-gradient(135deg, rgba(249, 170, 51, 0.18), rgba(255, 255, 255, 0.95));
+      box-shadow: 0 8px 18px rgba(249, 170, 51, 0.18);
+      transform: translateY(-1px);
+    }
+    .game-settings-note {
+      border-radius: 14px;
+      background: rgba(74, 101, 114, 0.08);
+      color: #344955;
+      padding: 12px 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+    .game-settings-actions {
+      display: grid;
+      gap: 10px;
+    }
+    .end-game-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+    }
     @media (max-width: 768px) {
       .rules-launch-btn {
         width: 100%;
@@ -989,6 +1153,9 @@
         gap: 10px;
         align-content: start;
       }
+      .topbar-actions {
+        justify-content: flex-start;
+      }
       .team-panel {
         justify-content: space-between;
         width: 100%;
@@ -998,11 +1165,8 @@
       .team-left-wrap > #teamLeft {
         order: 2;
       }
-      .team-left-wrap > .team-panel:last-child {
+      .team-left-wrap > .topbar-actions {
         order: 1;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
       }
       .board {
         --board-cols: 4;
@@ -1103,6 +1267,13 @@
         max-height: 90vh;
         overflow-y: auto;
       }
+      .game-settings-card {
+        padding: 18px 16px 16px;
+        border-radius: 18px;
+      }
+      .game-settings-header {
+        align-items: flex-start;
+      }
       .modal-word {
         font-size: clamp(1.5rem, 8vw, 2rem);
         margin-bottom: 18px;
@@ -1131,6 +1302,20 @@
         height: auto;
         font-size: clamp(2.4rem, 12vw, 4rem);
         line-height: 1.1;
+      }
+      .duration-grid {
+        grid-template-columns: 1fr;
+      }
+      .timer-mode-row {
+        align-items: stretch;
+      }
+      .settings-toggle-group {
+        width: 100%;
+        justify-content: stretch;
+      }
+      .settings-toggle-btn {
+        flex: 1;
+        text-align: center;
       }
       .modal-timer-note {
         font-size: 0.9rem;
@@ -1182,11 +1367,13 @@
       .team-left-wrap {
         gap: 8px;
       }
-      .team-left-wrap > .team-panel:last-child {
-        gap: 6px;
-      }
       .action-btn {
         font-size: 0.95rem;
+      }
+      .settings-icon-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
       }
       .center-title {
         font-size: 1.1rem;
@@ -1279,13 +1466,14 @@
       </div>
     </div>
     <div class="team-left-wrap">
+      <div class="topbar-actions">
+        <button class="settings-icon-btn" id="gameSettingsBtn" type="button" aria-label="خيارات اللعب" aria-haspopup="dialog" aria-controls="gameSettingsModal">
+          <i class="fas fa-sliders-h"></i>
+        </button>
+      </div>
       <div class="team-panel" id="teamLeft">
         <div class="team-name" id="teamTwoName">الفريق الثاني</div>
         <div class="team-score" id="scoreTeamTwo">0</div>
-      </div>
-      <div class="team-panel">
-        <button class="action-btn action-inline" id="btnEnd">إنهاء</button>
-        <button class="action-btn action-inline" id="btnExit">خروج</button>
       </div>
     </div>
   </header>
@@ -1329,6 +1517,60 @@
       <div class="modal-actions">
         <button class="btn success" id="btnCorrect">جاوبتوا صح</button>
         <button class="btn danger" id="btnSkip">صعبة عليكم!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="gameSettingsModal" aria-hidden="true">
+    <div class="modal-card game-settings-card" role="dialog" aria-modal="true" aria-labelledby="gameSettingsTitle">
+      <div class="game-settings-header">
+        <div class="game-settings-title" id="gameSettingsTitle">
+          <i class="fas fa-sliders-h"></i>
+          <span>خيارات اللعب</span>
+        </div>
+        <button class="game-settings-close" type="button" id="gameSettingsClose" aria-label="إغلاق">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="game-settings-body">
+        <section class="game-settings-section" aria-labelledby="gameSettingsTimerTitle">
+          <h3 id="gameSettingsTimerTitle">
+            <i class="fas fa-clock"></i>
+            <span>الوقت</span>
+          </h3>
+          <div class="timer-mode-row">
+            <span class="timer-mode-label">المؤقت</span>
+            <div class="settings-toggle-group" role="group" aria-label="التحكم في المؤقت">
+              <button class="settings-toggle-btn" type="button" data-timer-enabled="true">تشغيل</button>
+              <button class="settings-toggle-btn" type="button" data-timer-enabled="false">إيقاف</button>
+            </div>
+          </div>
+          <div class="duration-grid">
+            <button class="duration-option" type="button" data-game-duration="90">
+              <i class="fas fa-stopwatch"></i>
+              <span>90 ثانية</span>
+            </button>
+            <button class="duration-option" type="button" data-game-duration="120">
+              <i class="fas fa-stopwatch"></i>
+              <span>120 ثانية</span>
+            </button>
+            <button class="duration-option" type="button" data-game-duration="150">
+              <i class="fas fa-stopwatch"></i>
+              <span>150 ثانية</span>
+            </button>
+            <button class="duration-option" type="button" data-game-duration="180">
+              <i class="fas fa-stopwatch"></i>
+              <span>180 ثانية</span>
+            </button>
+          </div>
+          <div class="game-settings-note" id="gameSettingsTimeValue">المؤقت مفعّل على 01:30</div>
+        </section>
+        <div class="game-settings-actions">
+          <button class="btn danger end-game-btn" id="gameSettingsEndBtn" type="button">
+            <i class="fas fa-flag-checkered"></i>
+            <span>إنهاء اللعب</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1496,8 +1738,13 @@
     const btnToggleReveal = document.getElementById('btnToggleReveal');
     const btnCorrect = document.getElementById('btnCorrect');
     const btnSkip = document.getElementById('btnSkip');
-    const btnEnd = document.getElementById('btnEnd');
-    const btnExit = document.getElementById('btnExit');
+    const gameSettingsBtn = document.getElementById('gameSettingsBtn');
+    const gameSettingsModal = document.getElementById('gameSettingsModal');
+    const gameSettingsClose = document.getElementById('gameSettingsClose');
+    const gameSettingsTimerButtons = document.querySelectorAll('[data-timer-enabled]');
+    const gameDurationButtons = document.querySelectorAll('[data-game-duration]');
+    const gameSettingsTimeValue = document.getElementById('gameSettingsTimeValue');
+    const gameSettingsEndBtn = document.getElementById('gameSettingsEndBtn');
     const rulesBtn = document.getElementById('rulesBtn');
     const rulesModal = document.getElementById('rulesModal');
     const rulesClose = document.getElementById('rulesClose');
@@ -2503,6 +2750,98 @@
       return { timerDuration: Number.isNaN(duration) ? 90 : duration };
     }
 
+    function updateStoredGameData(patch) {
+      if (!patch || typeof patch !== 'object') return;
+      if (data && typeof data === 'object') {
+        Object.assign(data, patch);
+      }
+      try {
+        const raw = localStorage.getItem('ActNoTalk_game_data');
+        const stored = raw ? JSON.parse(raw) : {};
+        const fallback = data && typeof data === 'object' ? { ...data } : {};
+        const base = stored && typeof stored === 'object' ? stored : fallback;
+        Object.assign(base, patch);
+        localStorage.setItem('ActNoTalk_game_data', JSON.stringify(base));
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    function updateTimerSettings(patch) {
+      if (!patch || typeof patch !== 'object') return;
+      try {
+        const raw = localStorage.getItem(TIMER_SETTINGS_KEY);
+        const stored = raw ? JSON.parse(raw) : {};
+        const base = stored && typeof stored === 'object' ? stored : {};
+        Object.assign(base, patch);
+        localStorage.setItem(TIMER_SETTINGS_KEY, JSON.stringify(base));
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    function syncGameSettingsUi() {
+      const source = refreshTimerSettings();
+      const duration = parseInt((source && source.timerDuration) || 90, 10);
+      gameSettingsTimerButtons.forEach(btn => {
+        const isEnabledBtn = btn.dataset.timerEnabled === 'true';
+        const isActive = isEnabledBtn === timerEnabled;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      gameDurationButtons.forEach(btn => {
+        const isActive = parseInt(btn.dataset.gameDuration, 10) === duration;
+        btn.classList.toggle('active', isActive);
+      });
+      if (gameSettingsTimeValue) {
+        gameSettingsTimeValue.textContent = timerEnabled
+          ? `المؤقت مفعّل على ${formatTime(duration)}`
+          : `المؤقت متوقف الآن - الوقت المختار ${formatTime(duration)}`;
+      }
+    }
+
+    function persistGameTimerSettings(patch) {
+      if (!patch || typeof patch !== 'object') return;
+      const latest = refreshTimerSettings();
+      const nextPatch = {};
+      if (Object.prototype.hasOwnProperty.call(patch, 'timerEnabled')) {
+        nextPatch.timerEnabled = !!patch.timerEnabled;
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'timerDuration')) {
+        const nextDuration = parseInt(patch.timerDuration, 10);
+        if (!Number.isNaN(nextDuration) && nextDuration > 0) {
+          nextPatch.timerDuration = nextDuration;
+        }
+      }
+      if (!Object.keys(nextPatch).length) return;
+      updateStoredGameData(nextPatch);
+      updateTimerSettings({
+        timerEnabled: Object.prototype.hasOwnProperty.call(nextPatch, 'timerEnabled')
+          ? nextPatch.timerEnabled
+          : timerEnabled,
+        timerAutoClose: isAutoCloseOnTimeout,
+        timerDuration: Object.prototype.hasOwnProperty.call(nextPatch, 'timerDuration')
+          ? nextPatch.timerDuration
+          : latest.timerDuration
+      });
+      refreshTimerSettings();
+      syncGameSettingsUi();
+      resetModalTimer();
+    }
+
+    function openGameSettingsModal() {
+      if (!gameSettingsModal) return;
+      syncGameSettingsUi();
+      gameSettingsModal.classList.add('active');
+      gameSettingsModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeGameSettingsModal() {
+      if (!gameSettingsModal) return;
+      gameSettingsModal.classList.remove('active');
+      gameSettingsModal.setAttribute('aria-hidden', 'true');
+    }
+
     function applyTimerModeUi() {
       if (modalTimerNote) {
         modalTimerNote.style.display = isAutoCloseOnTimeout ? 'block' : 'none';
@@ -2951,35 +3290,38 @@
       window.location.href = 'index.html';
     }
 
-    btnCorrect.addEventListener('click', handleCorrect);
-    btnSkip.addEventListener('click', handleSkip);
-    if (btnNewGame) btnNewGame.addEventListener('click', startNewGameSameSettings);
-    if (btnBackHome) btnBackHome.addEventListener('click', resetGameAndGoHome);
-
-    // End/Exit actions
-    btnEnd.addEventListener('click', () => {
+    function endGameAndGoHome() {
       const confirmEnd = window.confirm('هل تريد إنهاء اللعبة بالكامل؟ سيتم مسح البيانات الحالية.');
       if (!confirmEnd) return;
-      try {
-        localStorage.removeItem('ActNoTalk_game_data');
-        localStorage.removeItem(getStateKey());
-      } catch (e) {
-        console.error('Failed to clear game data:', e);
-      }
-      window.location.href = 'index.html';
-    });
+      closeGameSettingsModal();
+      resetGameAndGoHome();
+    }
 
-    btnExit.addEventListener('click', () => {
-      saveState();
-      try {
-        if (data) {
-          localStorage.setItem('ActNoTalk_game_data', JSON.stringify(data));
+    btnCorrect.addEventListener('click', handleCorrect);
+    btnSkip.addEventListener('click', handleSkip);
+    if (gameSettingsBtn) gameSettingsBtn.addEventListener('click', openGameSettingsModal);
+    if (gameSettingsClose) gameSettingsClose.addEventListener('click', closeGameSettingsModal);
+    if (gameSettingsModal) {
+      gameSettingsModal.addEventListener('click', (e) => {
+        if (e.target === gameSettingsModal) {
+          closeGameSettingsModal();
         }
-      } catch (e) {
-        // ignore storage errors
-      }
-      window.location.href = 'index.html';
+      });
+    }
+    gameSettingsTimerButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        persistGameTimerSettings({ timerEnabled: btn.dataset.timerEnabled === 'true' });
+      });
     });
+    gameDurationButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        persistGameTimerSettings({ timerDuration: parseInt(btn.dataset.gameDuration, 10) });
+      });
+    });
+    if (gameSettingsEndBtn) gameSettingsEndBtn.addEventListener('click', endGameAndGoHome);
+    if (btnNewGame) btnNewGame.addEventListener('click', startNewGameSameSettings);
+    if (btnBackHome) btnBackHome.addEventListener('click', resetGameAndGoHome);
+    syncGameSettingsUi();
   </script>
 </body>
 </html>
