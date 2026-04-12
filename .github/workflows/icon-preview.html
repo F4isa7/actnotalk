@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActNoTalk Icon Preview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --bg: #f4f6f7;
+        --card: #ffffff;
+        --ink: #232f34;
+        --accent: #4a6572;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Tajawal", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 32px auto;
+        padding: 0 20px 40px;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 0 0 16px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 18px 14px;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        border: 2px solid rgba(74, 101, 114, 0.15);
+      }
+      .card i {
+        font-size: 28px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .label {
+        font-size: 13px;
+        color: #4a5b64;
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Gesture-style Icon Options</h1>
+      <div class="grid">
+        <div class="card"><i class="fas fa-hand-point-up"></i><div class="label">fa-hand-point-up</div></div>
+        <div class="card"><i class="fas fa-hand-point-right"></i><div class="label">fa-hand-point-right</div></div>
+        <div class="card"><i class="fas fa-hand-point-left"></i><div class="label">fa-hand-point-left</div></div>
+        <div class="card"><i class="fas fa-hand-point-down"></i><div class="label">fa-hand-point-down</div></div>
+        <div class="card"><i class="fas fa-hands"></i><div class="label">fa-hands</div></div>
+        <div class="card"><i class="fas fa-handshake"></i><div class="label">fa-handshake</div></div>
+        <div class="card"><i class="fas fa-hand-peace"></i><div class="label">fa-hand-peace</div></div>
+        <div class="card"><i class="fas fa-hand"></i><div class="label">fa-hand</div></div>
+        <div class="card"><i class="fas fa-hand-spock"></i><div class="label">fa-hand-spock</div></div>
+        <div class="card"><i class="fa-solid fa-face-shushing"></i><div class="label">fa-face-shushing</div></div>
+        <div class="card"><i class="fa-solid fa-comment-slash"></i><div class="label">fa-comment-slash</div></div>
+        <div class="card"><i class="fa-solid fa-volume-xmark"></i><div class="label">fa-volume-xmark</div></div>
+        <div class="card"><i class="fa-solid fa-microphone-slash"></i><div class="label">fa-microphone-slash</div></div>
+        <div class="card"><div class="label" style="font-size:28px;">🤫</div><div class="label">emoji-shushing-face</div></div>
+      </div>
+    </div>
+  </body>
+</html>
