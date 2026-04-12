@@ -1271,18 +1271,33 @@
       }
       .board {
         --board-cols: 4;
-        gap: 8px;
-        padding: 8px;
-        border-radius: 24px;
+        gap: 10px;
+        padding: 0;
+        height: auto;
+        max-height: none;
+        flex: 0 0 auto;
+        grid-auto-rows: auto;
+        border-radius: 0;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        box-shadow: none;
+        overflow: visible;
       }
       .tile {
         min-height: 0;
-        padding: 7px 8px;
+        aspect-ratio: 1 / 1;
+        padding: 0;
         border-radius: 16px;
         font-size: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.82);
+        box-shadow: 0 10px 18px rgba(15, 23, 32, 0.14);
+      }
+      .tile-content {
+        padding: 0;
       }
       .tile-number {
-        font-size: clamp(1.2rem, 5vw, 1.75rem);
+        font-size: clamp(1.35rem, 5.3vw, 1.9rem);
       }
       .modal-overlay {
         padding: 12px;
@@ -1418,15 +1433,16 @@
       }
       .board {
         --board-cols: 4;
-        gap: 7px;
-        padding: 7px;
+        gap: 8px;
+        padding: 0;
       }
       .tile {
         min-height: 0;
-        padding: 6px;
+        padding: 0;
+        border-radius: 14px;
       }
       .tile-number {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
       }
       .rules-tabs {
         padding: 8px 10px;
