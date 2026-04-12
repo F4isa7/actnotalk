@@ -948,21 +948,24 @@
 
     @media (max-width: 960px) {
       .topbar {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
         padding: 12px 14px;
+        align-items: start;
       }
       .center-title {
-        order: -1;
+        grid-column: 1 / -1;
         width: 100%;
       }
-      #teamRight,
-      .team-left-wrap {
+      #teamRight {
+        grid-column: 1;
         justify-self: stretch;
       }
       .team-left-wrap {
+        grid-column: 2;
+        justify-self: stretch;
+        display: grid;
         gap: 10px;
-        flex-direction: column;
       }
       .team-panel {
         justify-content: space-between;
@@ -993,6 +996,7 @@
       }
       .center-title {
         gap: 10px;
+        order: 3;
       }
       .turn-badge {
         width: 100%;
@@ -1007,6 +1011,9 @@
       }
       .team-name {
         font-size: 1rem;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.35;
       }
       .team-score {
         min-width: 38px;
@@ -1127,6 +1134,9 @@
       .topbar {
         gap: 10px;
         padding: 10px;
+      }
+      .center-title {
+        gap: 8px;
       }
       .team-panel {
         padding: 8px 10px;
