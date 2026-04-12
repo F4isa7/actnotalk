@@ -2661,9 +2661,24 @@
             if (!categoriesGrid) return;
             categoriesGrid.innerHTML = '';
 
+            const regularOrder = new Map([
+                [1, 0], // مسرحيات
+                [8, 1], // مسلسلات خليجية
+                [9, 2], // مسلسلات عربية
+                [6, 3], // أفلام عربية
+                [3, 4], // أغاني خليجية
+                [4, 5], // أغاني عربية
+            ]);
             const regularCategories = categories.filter(category => !UPCOMING_CATEGORY_IDS.has(category.id));
             const upcomingCategories = categories.filter(category => UPCOMING_CATEGORY_IDS.has(category.id));
-            const orderedCategories = [...regularCategories, ...upcomingCategories];
+            const orderedCategories = [
+                ...regularCategories.sort((a, b) => {
+                    const aOrder = regularOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER;
+                    const bOrder = regularOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER;
+                    return aOrder - bOrder;
+                }),
+                ...upcomingCategories
+            ];
 
             orderedCategories.forEach(category => {
                 const isUpcoming = UPCOMING_CATEGORY_IDS.has(category.id);
