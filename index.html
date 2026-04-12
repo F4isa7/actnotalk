@@ -407,6 +407,14 @@
             background: white;
         }
 
+        .team-name-input {
+            text-align: right;
+        }
+
+        .team-name-input::placeholder {
+            text-align: right;
+        }
+
         .form-input:focus {
             outline: none;
             border-color: var(--secondary-color);
@@ -1956,7 +1964,7 @@
                             <i class="fas fa-users"></i>
                             اسم الفريق الأول
                         </label>
-                        <input type="text" id="teamOneName" class="form-input" placeholder="مثل: الشباب" dir="auto" inputmode="text" autocapitalize="words">
+                        <input type="text" id="teamOneName" class="form-input team-name-input" placeholder="مثل: الشباب" dir="auto" inputmode="text" autocapitalize="words">
                     </div>
                     
                     <div class="form-group">
@@ -1964,7 +1972,7 @@
                             <i class="fas fa-users"></i>
                             اسم الفريق الثاني
                         </label>
-                        <input type="text" id="teamTwoName" class="form-input" placeholder="مثل: البنات" dir="auto" inputmode="text" autocapitalize="words">
+                        <input type="text" id="teamTwoName" class="form-input team-name-input" placeholder="مثل: البنات" dir="auto" inputmode="text" autocapitalize="words">
                     </div>
                 </div>
             </div>
