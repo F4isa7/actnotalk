@@ -2623,11 +2623,12 @@
       }
 
       if (modalPlaceholderText) {
+        modalPlaceholderText.style.display = state === 'no-image' ? 'none' : '';
         modalPlaceholderText.textContent =
           state === 'loading'
             ? 'جاري تجهيز العرض'
             : state === 'no-image'
-              ? 'لا توجد صورة لهذه الكلمة'
+              ? ''
               : 'اضغط إظهار للعرض';
       }
     }
