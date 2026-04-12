@@ -1529,6 +1529,135 @@
         font-size: 0.95rem;
       }
     }
+
+    /* Final mobile header layout */
+    @media (max-width: 768px) {
+      .topbar {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr) minmax(0, 1fr) 42px;
+        grid-template-areas:
+          "ghost turn turn actions"
+          "right right left left";
+        gap: 10px 8px;
+        padding: 10px 12px 14px;
+        align-items: center;
+      }
+      .team-left-wrap {
+        display: contents;
+      }
+      .center-title {
+        grid-area: turn;
+        width: 100%;
+        min-height: 0;
+        padding: 0;
+        gap: 0;
+        justify-self: stretch;
+        align-self: center;
+      }
+      .title-row {
+        display: none;
+      }
+      .turn-badge {
+        width: max-content;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 42px;
+        margin-inline: auto;
+        padding: 0 14px;
+        justify-content: center;
+        white-space: nowrap;
+        border-radius: 999px;
+        font-size: 0.95rem;
+      }
+      .turn-badge > span:first-child {
+        flex: 0 0 auto;
+      }
+      #turnName {
+        min-width: 0;
+        max-width: min(42vw, 220px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .topbar-actions {
+        grid-area: actions;
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-self: end;
+        align-self: center;
+      }
+      .settings-icon-btn {
+        width: 42px;
+        height: 42px;
+        margin: 0;
+        border-radius: 14px;
+      }
+      #teamRight,
+      #teamLeft {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+      }
+      #teamRight {
+        grid-area: right;
+        justify-self: stretch;
+      }
+      #teamLeft {
+        grid-area: left;
+        justify-self: stretch;
+      }
+      .team-panel {
+        min-height: 54px;
+        padding: 8px 10px;
+        border-radius: 18px;
+        align-items: center;
+      }
+      .team-name {
+        font-size: 0.9rem;
+        line-height: 1.15;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .team-score {
+        min-width: 36px;
+        padding: 4px 9px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        grid-template-columns: 38px minmax(0, 1fr) minmax(0, 1fr) 38px;
+        gap: 8px 6px;
+        padding: 9px 10px 12px;
+      }
+      .settings-icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+      .turn-badge {
+        min-height: 38px;
+        font-size: 0.88rem;
+        padding: 0 12px;
+      }
+      #turnName {
+        max-width: min(40vw, 180px);
+      }
+      .team-panel {
+        min-height: 50px;
+        padding: 8px 9px;
+      }
+      .team-name {
+        font-size: 0.82rem;
+      }
+      .team-score {
+        min-width: 34px;
+        font-size: 0.86rem;
+      }
+    }
   </style>
 </head>
 <body>
