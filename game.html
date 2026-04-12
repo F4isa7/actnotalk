@@ -2631,13 +2631,8 @@
       }
 
       if (modalPlaceholderText) {
-        modalPlaceholderText.style.display = state === 'no-image' ? 'none' : '';
-        modalPlaceholderText.textContent =
-          state === 'loading'
-            ? 'جاري تجهيز العرض'
-            : state === 'no-image'
-              ? ''
-              : 'اضغط إظهار للعرض';
+        modalPlaceholderText.style.display = state === 'prompt' ? '' : 'none';
+        modalPlaceholderText.textContent = state === 'prompt' ? 'اضغط إظهار للعرض' : '';
       }
     }
 
