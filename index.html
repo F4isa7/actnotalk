@@ -3574,7 +3574,7 @@
                 } catch (e) {
                     console.error('Failed to save game data:', e);
                 }
-                window.open('game.html', '_blank');
+                window.open('match/', '_blank');
                 
                 // Start timer automatically when game starts
                 if (!isTimerRunning) {
@@ -3583,7 +3583,7 @@
             }, 800);
         }
 
-        // openGamePage removed in favor of game.html
+        // openGamePage removed in favor of match/
 
         function selectServer(serverId) {
             if (Number.isNaN(serverId)) return;
@@ -3597,7 +3597,7 @@
             resumeGameBtn.addEventListener('click', () => {
                 clearCompletedFlag();
                 persistTimerSettings();
-                window.open('game.html', '_blank');
+                window.open('match/', '_blank');
             });
         }
         
