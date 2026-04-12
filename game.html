@@ -1563,6 +1563,13 @@
               <span>180 ثانية</span>
             </button>
           </div>
+          <div class="timer-mode-row">
+            <span class="timer-mode-label">إغلاق تلقائي للكلمة عند انتهاء الوقت</span>
+            <div class="settings-toggle-group" role="group" aria-label="الإغلاق التلقائي للكلمة">
+              <button class="settings-toggle-btn" type="button" data-auto-close="true">تشغيل</button>
+              <button class="settings-toggle-btn" type="button" data-auto-close="false">إيقاف</button>
+            </div>
+          </div>
           <div class="game-settings-note" id="gameSettingsTimeValue">المؤقت مفعّل على 01:30</div>
         </section>
         <div class="game-settings-actions">
@@ -1743,6 +1750,7 @@
     const gameSettingsClose = document.getElementById('gameSettingsClose');
     const gameSettingsTimerButtons = document.querySelectorAll('[data-timer-enabled]');
     const gameDurationButtons = document.querySelectorAll('[data-game-duration]');
+    const gameSettingsAutoCloseButtons = document.querySelectorAll('[data-auto-close]');
     const gameSettingsTimeValue = document.getElementById('gameSettingsTimeValue');
     const gameSettingsEndBtn = document.getElementById('gameSettingsEndBtn');
     const rulesBtn = document.getElementById('rulesBtn');
@@ -2793,9 +2801,15 @@
         const isActive = parseInt(btn.dataset.gameDuration, 10) === duration;
         btn.classList.toggle('active', isActive);
       });
+      gameSettingsAutoCloseButtons.forEach(btn => {
+        const shouldAutoClose = btn.dataset.autoClose === 'true';
+        const isActive = shouldAutoClose === isAutoCloseOnTimeout;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
       if (gameSettingsTimeValue) {
         gameSettingsTimeValue.textContent = timerEnabled
-          ? `المؤقت مفعّل على ${formatTime(duration)}`
+          ? `المؤقت مفعّل على ${formatTime(duration)}${isAutoCloseOnTimeout ? ' مع إغلاق تلقائي' : ''}`
           : `المؤقت متوقف الآن - الوقت المختار ${formatTime(duration)}`;
       }
     }
@@ -2813,13 +2827,18 @@
           nextPatch.timerDuration = nextDuration;
         }
       }
+      if (Object.prototype.hasOwnProperty.call(patch, 'timerAutoClose')) {
+        nextPatch.timerAutoClose = !!patch.timerAutoClose;
+      }
       if (!Object.keys(nextPatch).length) return;
       updateStoredGameData(nextPatch);
       updateTimerSettings({
         timerEnabled: Object.prototype.hasOwnProperty.call(nextPatch, 'timerEnabled')
           ? nextPatch.timerEnabled
           : timerEnabled,
-        timerAutoClose: isAutoCloseOnTimeout,
+        timerAutoClose: Object.prototype.hasOwnProperty.call(nextPatch, 'timerAutoClose')
+          ? nextPatch.timerAutoClose
+          : isAutoCloseOnTimeout,
         timerDuration: Object.prototype.hasOwnProperty.call(nextPatch, 'timerDuration')
           ? nextPatch.timerDuration
           : latest.timerDuration
@@ -3316,6 +3335,11 @@
     gameDurationButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         persistGameTimerSettings({ timerDuration: parseInt(btn.dataset.gameDuration, 10) });
+      });
+    });
+    gameSettingsAutoCloseButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        persistGameTimerSettings({ timerAutoClose: btn.dataset.autoClose === 'true' });
       });
     });
     if (gameSettingsEndBtn) gameSettingsEndBtn.addEventListener('click', endGameAndGoHome);
