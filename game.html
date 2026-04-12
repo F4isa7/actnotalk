@@ -54,6 +54,61 @@
       pointer-events: none;
       z-index: 2;
     }
+    .ad-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      gap: 12px;
+      text-align: center;
+      padding: 18px 10px;
+    }
+    .ad-slot-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(249, 170, 51, 0.16);
+      border: 1px solid rgba(249, 170, 51, 0.4);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+    .ad-slot-size {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #232F34;
+      line-height: 1.4;
+    }
+    .ad-slot-text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #4A6572;
+      opacity: 0.92;
+    }
+    .ad-slot-side .ad-slot-size {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 1px;
+    }
+    .ad-slot-side .ad-slot-text {
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+    .ad-slot-banner {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: center;
+    }
+    .ad-slot-banner .ad-slot-text {
+      font-size: 0.95rem;
+    }
     .side-ad-left { left: 2px !important; }
     .side-ad-right { right: 2px !important; }
     .banner-ad {
@@ -81,6 +136,18 @@
         width: 82px;
         height: 560px;
         font-size: 0.9rem;
+      }
+      .ad-slot {
+        gap: 8px;
+        padding: 14px 6px;
+      }
+      .ad-slot-tag {
+        min-width: 52px;
+        min-height: 24px;
+        font-size: 0.68rem;
+      }
+      .ad-slot-text {
+        font-size: 0.74rem;
       }
     }
     body::before {
@@ -1669,8 +1736,20 @@
   </style>
 </head>
 <body>
-  <div class="side-ad side-ad-left" aria-hidden="true">إعلان</div>
-  <div class="side-ad side-ad-right" aria-hidden="true">إعلان</div>
+  <div class="side-ad side-ad-left" aria-hidden="true">
+    <div class="ad-slot ad-slot-side">
+      <span class="ad-slot-tag">Ad</span>
+      <div class="ad-slot-size">160 x 600</div>
+      <div class="ad-slot-text">مساحة إعلانية جانبية</div>
+    </div>
+  </div>
+  <div class="side-ad side-ad-right" aria-hidden="true">
+    <div class="ad-slot ad-slot-side">
+      <span class="ad-slot-tag">Ad</span>
+      <div class="ad-slot-size">160 x 600</div>
+      <div class="ad-slot-text">مساحة إعلانية جانبية</div>
+    </div>
+  </div>
   <div class="bg-watermark">
     <div class="logo-section">
       <div class="logo logo-image">
@@ -1716,7 +1795,13 @@
       </button>
     </div>
   </main>
-  <div class="banner-ad" aria-hidden="true">إعلان</div>
+  <div class="banner-ad" aria-hidden="true">
+    <div class="ad-slot ad-slot-banner">
+      <span class="ad-slot-tag">Ad</span>
+      <div class="ad-slot-size">970 x 90</div>
+      <div class="ad-slot-text">مساحة بانر إعلاني لسطح المكتب</div>
+    </div>
+  </div>
 
   <div class="modal-overlay" id="wordModal" aria-hidden="true">
     <div class="modal-card">
