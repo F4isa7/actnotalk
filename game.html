@@ -152,18 +152,23 @@
     .team-panel {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       background: #1d262b;
       padding: 8px 12px;
       border-radius: 999px;
       border: 2px solid rgba(249, 170, 51, 0.35);
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      min-width: 0;
     }
     .team-name {
+      flex: 1 1 auto;
       font-weight: 700;
       color: #fff;
       font-size: 1.15rem;
       white-space: nowrap;
+      min-width: 0;
+      text-align: center;
     }
     .action-inline {
       font-size: 1.15rem;
@@ -810,7 +815,7 @@
       display: grid;
       grid-template-columns: repeat(var(--board-cols), minmax(0, 1fr));
       grid-auto-rows: minmax(0, 1fr);
-      gap: 12px;
+      gap: 10px;
       position: relative;
       z-index: 1;
       min-height: 0;
@@ -821,11 +826,18 @@
       flex: 5 1 0%;
       height: var(--grid-max-h);
       max-height: var(--grid-max-h);
+      padding: 12px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.18);
+      overflow: hidden;
     }
     .tile {
-      background: #435D69;
-      border-radius: 14px;
-      padding: 12px;
+      background: linear-gradient(180deg, rgba(67, 93, 105, 0.95), rgba(52, 73, 85, 0.96));
+      border-radius: 18px;
+      padding: 10px;
       min-height: 0;
       font-size: 1.5rem;
       position: relative;
@@ -835,22 +847,25 @@
       text-align: center;
       font-weight: 700;
       color: #fff;
-      border: 2px solid #e8ecef;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 16px rgba(15,23,32,0.16);
       cursor: pointer;
     }
     .tile-content {
       position: absolute;
       inset: 0;
+      padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .tile-number {
-      font-size: 2.6rem;
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
       font-weight: 900;
       color: #fff;
       z-index: 2;
+      line-height: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
     .tile-brand {
       position: absolute;
@@ -861,7 +876,7 @@
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      opacity: 0.07;
+      opacity: 0.05;
       justify-content: center;
     }
     .tile-brand .logo-section {
@@ -1125,61 +1140,67 @@
 
     @media (max-width: 960px) {
       :root {
-        --grid-max-h: min(64vh, calc(100dvh - 240px));
+        --grid-max-h: min(64vh, calc(100dvh - 220px));
       }
       .topbar {
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-        grid-template-areas:
-          "left turn spacer"
-          "left . right";
-        gap: 10px 12px;
-        padding: 12px 14px;
-        align-items: start;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px 10px;
+        padding: 12px 14px 16px;
       }
       .center-title {
-        grid-area: turn;
-        width: auto;
+        order: 1;
+        width: 100%;
+        padding-inline: 58px;
         justify-self: center;
         align-self: center;
       }
-      #teamRight {
-        grid-area: right;
-        justify-self: stretch;
-      }
       .team-left-wrap {
-        grid-area: left;
-        justify-self: stretch;
-        display: grid;
-        gap: 10px;
-        align-content: start;
+        display: contents;
+      }
+      #teamRight,
+      #teamLeft {
+        flex: 1 1 calc(50% - 6px);
+        width: calc(50% - 6px);
+        max-width: none;
       }
       .topbar-actions {
+        order: 2;
+        position: absolute;
+        top: 12px;
+        inset-inline-start: 14px;
         justify-content: flex-start;
       }
       .team-panel {
-        justify-content: space-between;
         width: 100%;
-        flex-wrap: wrap;
-        min-width: 0;
+        min-height: 56px;
+        border-radius: 22px;
       }
-      .team-left-wrap > #teamLeft {
-        order: 2;
+      #teamRight {
+        order: 3;
       }
-      .team-left-wrap > .topbar-actions {
-        order: 1;
+      #teamLeft {
+        order: 4;
       }
       .board {
         --board-cols: 4;
+        padding: 10px;
       }
       .bg-watermark .logo-section {
         transform: scale(1.1) rotate(-8deg);
         opacity: 0.12;
       }
+      .tile-brand {
+        display: none;
+      }
     }
 
     @media (max-width: 768px) {
       :root {
-        --grid-max-h: min(58vh, calc(100dvh - 230px));
+        --grid-max-h: min(60vh, calc(100dvh - 206px));
       }
       .banner-ad {
         height: 60px;
@@ -1191,9 +1212,11 @@
         padding: 0 12px 20px;
       }
       .topbar {
-        padding: 12px;
+        gap: 10px 8px;
+        padding: 10px 12px 14px;
       }
       .center-title {
+        padding-inline: 54px;
         gap: 10px;
       }
       .turn-badge {
@@ -1211,6 +1234,10 @@
       .team-score {
         min-width: 38px;
         font-size: 1rem;
+      }
+      .topbar-actions {
+        top: 10px;
+        inset-inline-start: 12px;
       }
       .action-inline {
         flex: 1;
@@ -1244,19 +1271,18 @@
       }
       .board {
         --board-cols: 4;
-        gap: 10px;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 24px;
       }
       .tile {
         min-height: 0;
-        padding: 8px;
-        border-radius: 12px;
+        padding: 7px 8px;
+        border-radius: 16px;
         font-size: 1rem;
       }
       .tile-number {
-        font-size: 1.65rem;
-      }
-      .tile-brand {
-        display: none;
+        font-size: clamp(1.2rem, 5vw, 1.75rem);
       }
       .modal-overlay {
         padding: 12px;
@@ -1370,10 +1396,8 @@
       }
       .team-panel {
         padding: 8px 10px;
+        min-height: 50px;
         border-radius: 18px;
-      }
-      .team-left-wrap {
-        gap: 8px;
       }
       .action-btn {
         font-size: 0.95rem;
@@ -1394,14 +1418,15 @@
       }
       .board {
         --board-cols: 4;
-        gap: 8px;
+        gap: 7px;
+        padding: 7px;
       }
       .tile {
         min-height: 0;
         padding: 6px;
       }
       .tile-number {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
       }
       .rules-tabs {
         padding: 8px 10px;
