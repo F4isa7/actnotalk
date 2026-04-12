@@ -864,6 +864,20 @@
       gap: 10px;
       color: #4A6572;
     }
+    .modal-placeholder[data-state="loading"],
+    .modal-placeholder[data-state="no-image"] {
+      height: auto;
+      min-height: 104px;
+      padding: 16px 14px;
+      gap: 8px;
+    }
+    .modal-placeholder[data-state="loading"] {
+      border-style: dashed;
+    }
+    .modal-placeholder[data-state="no-image"] {
+      background: rgba(74, 101, 114, 0.08);
+      border-color: rgba(74, 101, 114, 0.18);
+    }
     .modal-placeholder i {
       font-size: 2.2rem;
       color: #F9AA33;
@@ -873,6 +887,10 @@
     }
     .modal-placeholder .btn {
       margin-top: 10px;
+    }
+    .modal-placeholder[data-state="loading"] .btn,
+    .modal-placeholder[data-state="no-image"] .btn {
+      margin-top: 0;
     }
     .modal-placeholder.compact {
       height: auto;
@@ -925,6 +943,263 @@
       100% {
         transform: translateY(0);
         box-shadow: 0 0 0 0 rgba(249, 170, 51, 0), 0 0 14px rgba(249, 170, 51, 0.85);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .topbar {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px 14px;
+      }
+      .center-title {
+        order: -1;
+        width: 100%;
+      }
+      #teamRight,
+      .team-left-wrap {
+        justify-self: stretch;
+      }
+      .team-left-wrap {
+        gap: 10px;
+        flex-direction: column;
+      }
+      .team-panel {
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+      .board {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .bg-watermark .logo-section {
+        transform: scale(1.1) rotate(-8deg);
+        opacity: 0.12;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner-ad {
+        height: 60px;
+        margin: 8px auto 20px;
+        font-size: 0.95rem;
+      }
+      main {
+        margin: 10px auto 0;
+        padding: 0 12px 20px;
+      }
+      .topbar {
+        padding: 12px;
+      }
+      .center-title {
+        gap: 10px;
+      }
+      .turn-badge {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 10px 12px;
+      }
+      .team-left-wrap > .team-panel:last-child {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .team-name {
+        font-size: 1rem;
+      }
+      .team-score {
+        min-width: 38px;
+        font-size: 1rem;
+      }
+      .action-inline {
+        flex: 1;
+        min-height: 42px;
+        width: 100%;
+      }
+      .rules-launch-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 14px;
+      }
+      .rules-modal-card {
+        max-height: 88vh;
+        border-radius: 18px;
+      }
+      .rules-modal-header {
+        padding: 14px 16px;
+      }
+      .rules-modal-title {
+        font-size: 1.1rem;
+      }
+      .rules-body {
+        padding: 14px;
+      }
+      .results-card {
+        padding: 28px 18px 22px;
+        border-radius: 22px;
+      }
+      .results-name {
+        font-size: 1.3rem;
+      }
+      .board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .tile {
+        min-height: 138px;
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 1.2rem;
+      }
+      .tile-number {
+        font-size: 2rem;
+      }
+      .tile-brand {
+        display: none;
+      }
+      .modal-overlay {
+        padding: 12px;
+      }
+      .modal-card {
+        padding: 18px 16px 16px;
+        border-radius: 18px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-word {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+        margin-bottom: 18px;
+      }
+      .modal-image {
+        height: 280px;
+        margin-bottom: 18px;
+        padding: 10px;
+      }
+      .modal-placeholder {
+        height: auto;
+        min-height: 112px;
+        padding: 16px 12px;
+        margin-bottom: 14px;
+      }
+      .modal-placeholder .btn {
+        width: 100%;
+      }
+      .timer-display-container {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+      }
+      .timer-display {
+        width: 100%;
+        height: auto;
+        font-size: clamp(2.4rem, 12vw, 4rem);
+        line-height: 1.1;
+      }
+      .modal-timer-note {
+        font-size: 0.9rem;
+      }
+      .modal-timer-actions,
+      .modal-actions,
+      .results-actions,
+      .rules-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .modal-timer-actions .btn,
+      .modal-actions .btn,
+      .results-actions .btn,
+      .rules-confirm {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .bg-watermark {
+        display: none;
+      }
+      .banner-ad {
+        max-width: calc(100% - 20px);
+        height: 54px;
+        margin-bottom: 16px;
+        border-radius: 14px;
+      }
+      .topbar {
+        gap: 10px;
+        padding: 10px;
+      }
+      .team-panel {
+        padding: 8px 10px;
+        border-radius: 18px;
+      }
+      .team-left-wrap {
+        gap: 8px;
+      }
+      .action-btn {
+        font-size: 0.95rem;
+      }
+      .center-title {
+        font-size: 1.1rem;
+      }
+      .turn-badge {
+        font-size: 0.95rem;
+      }
+      main {
+        padding: 0 10px 18px;
+      }
+      .board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .tile {
+        min-height: 116px;
+        padding: 8px;
+      }
+      .tile-number {
+        font-size: 1.75rem;
+      }
+      .rules-tabs {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+      .rules-tab {
+        padding: 9px 12px;
+        font-size: 0.9rem;
+      }
+      .results-card {
+        padding: 22px 14px 18px;
+      }
+      .results-title {
+        font-size: 1.7rem;
+      }
+      .results-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+      }
+      .results-team {
+        padding: 16px 14px;
+        border-radius: 16px;
+      }
+      .results-name {
+        font-size: 1.15rem;
+      }
+      .results-score {
+        font-size: 1.8rem;
+      }
+      .modal-card {
+        padding: 16px 12px 14px;
+      }
+      .modal-image {
+        height: 220px;
+      }
+      .modal-word {
+        font-size: 1.35rem;
+      }
+      .timer-display-container {
+        border-radius: 10px;
+      }
+      .duration-label {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -1164,6 +1439,8 @@
     const btnTimerPause = document.getElementById('btnTimerPause');
     const modalTimerNote = document.getElementById('modalTimerNote');
     const modalPlaceholder = document.getElementById('modalPlaceholder');
+    const modalPlaceholderIcon = modalPlaceholder ? modalPlaceholder.querySelector('i') : null;
+    const modalPlaceholderText = modalPlaceholder ? modalPlaceholder.querySelector('span') : null;
     const modalImage = document.getElementById('modalImage');
     const modalImageEl = document.getElementById('modalImageEl');
     const btnToggleReveal = document.getElementById('btnToggleReveal');
@@ -1271,6 +1548,7 @@
       8: 'صور المسلسلات',
       9: 'صور المسلسلات'
     };
+    const CATEGORY_IDS_WITH_IMAGES = new Set(Object.keys(CATEGORY_IMAGE_FOLDERS).map(Number));
     const IMAGE_EXTENSIONS = (() => {
       const base = ['.webp', '.png', '.jpg', '.jpeg', '.jfif'];
       const upper = base.map(ext => ext.toUpperCase());
@@ -2013,10 +2291,47 @@
       return Array.from(new Set(candidates));
     }
 
+    function updateModalPlaceholderState() {
+      if (!modalPlaceholder) return;
+      let state = 'prompt';
+      if (isRevealed) {
+        if (activeWordHasImage === true) {
+          state = 'compact';
+        } else if (activeWordHasImage === false) {
+          state = 'no-image';
+        } else {
+          state = 'loading';
+        }
+      }
+
+      modalPlaceholder.dataset.state = state;
+      modalPlaceholder.classList.toggle('compact', state === 'compact');
+      modalPlaceholder.style.display = 'flex';
+
+      if (modalPlaceholderIcon) {
+        modalPlaceholderIcon.className =
+          state === 'loading'
+            ? 'fas fa-spinner fa-spin'
+            : state === 'no-image'
+              ? 'fas fa-image-slash'
+              : 'fas fa-eye';
+      }
+
+      if (modalPlaceholderText) {
+        modalPlaceholderText.textContent =
+          state === 'loading'
+            ? 'جاري تجهيز العرض'
+            : state === 'no-image'
+              ? 'لا توجد صورة لهذه الكلمة'
+              : 'اضغط إظهار للعرض';
+      }
+    }
+
     function applyRevealState() {
       if (!modalWord || !modalImage) return;
       modalWord.style.display = isRevealed ? 'block' : 'none';
-      modalImage.style.display = isRevealed && activeWordHasImage !== false ? 'flex' : 'none';
+      modalImage.style.display = isRevealed && activeWordHasImage === true ? 'flex' : 'none';
+      updateModalPlaceholderState();
     }
 
     function setModalImageForWord(word) {
@@ -2031,6 +2346,13 @@
       activeWordHasImage = null;
       const categoryId = wordCategoryIndex.get(word);
       if (!categoryId) {
+        modalImageEl.style.display = 'none';
+        activeWordHasImage = false;
+        applyRevealState();
+        return;
+      }
+      if (!CATEGORY_IDS_WITH_IMAGES.has(categoryId)) {
+        modalImageEl.removeAttribute('src');
         modalImageEl.style.display = 'none';
         activeWordHasImage = false;
         applyRevealState();
@@ -2053,6 +2375,7 @@
         modalImageEl.src = candidates[index++];
       };
 
+      applyRevealState();
       modalImageEl.onload = () => {
         activeWordHasImage = true;
         modalImageEl.style.display = 'block';
@@ -2062,6 +2385,30 @@
         tryNext();
       };
       tryNext();
+    }
+
+    function openWordTile(tile, word, index) {
+      if (!word) return;
+      if (tile.classList.contains('used')) return;
+      activeTile = tile;
+      activeTile.dataset.index = String(index);
+      activeWordHasImage = null;
+      isRevealed = false;
+      hasRevealedOnce = false;
+      modalWord.textContent = buildModalWordLabel(word);
+      updateModalPlaceholderState();
+      modalWord.style.display = 'none';
+      modalImageEl.removeAttribute('src');
+      modalImageEl.style.display = 'none';
+      modalImage.style.display = 'none';
+      setAnswerButtonsEnabled(false);
+      setTimerActionsAvailable(false);
+      btnToggleReveal.textContent = 'إظهار';
+      btnToggleReveal.classList.add('reveal-pulse');
+      setModalImageForWord(word);
+      resetModalTimer();
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
     }
 
     function refreshTimerSettings() {
@@ -2272,28 +2619,7 @@
           tile.disabled = true;
         }
         tile.addEventListener('click', () => {
-          if (!boardWords[i]) return;
-          if (tile.classList.contains('used')) return;
-          activeTile = tile;
-          activeTile.dataset.index = String(i);
-          activeWordHasImage = null;
-          modalWord.textContent = buildModalWordLabel(boardWords[i]);
-          setModalImageForWord(boardWords[i]);
-          isRevealed = false;
-          hasRevealedOnce = false;
-          if (modalPlaceholder) {
-            modalPlaceholder.style.display = 'flex';
-            modalPlaceholder.classList.remove('compact');
-          }
-          modalWord.style.display = 'none';
-          modalImage.style.display = 'none';
-          btnToggleReveal.textContent = 'إظهار';
-          setAnswerButtonsEnabled(false);
-          setTimerActionsAvailable(false);
-          btnToggleReveal.classList.add('reveal-pulse');
-          resetModalTimer();
-          modal.classList.add('active');
-          modal.setAttribute('aria-hidden', 'false');
+          openWordTile(tile, boardWords[i], i);
         });
         boardEl.appendChild(tile);
       }
@@ -2426,9 +2752,6 @@
 
     btnToggleReveal.addEventListener('click', () => {
       isRevealed = !isRevealed;
-      if (modalPlaceholder) {
-        modalPlaceholder.classList.toggle('compact', isRevealed);
-      }
       applyRevealState();
       btnToggleReveal.textContent = isRevealed ? 'إخفاء' : 'إظهار';
       if (isRevealed) {
@@ -2559,27 +2882,7 @@
           tile.disabled = true;
         }
         tile.addEventListener('click', () => {
-          if (!boardWords[i]) return;
-          if (tile.classList.contains('used')) return;
-          activeTile = tile;
-          activeTile.dataset.index = String(i);
-          activeWordHasImage = null;
-          modalWord.textContent = buildModalWordLabel(boardWords[i]);
-          setModalImageForWord(boardWords[i]);
-          isRevealed = false;
-          hasRevealedOnce = false;
-          if (modalPlaceholder) {
-            modalPlaceholder.style.display = 'flex';
-            modalPlaceholder.classList.remove('compact');
-          }
-          modalWord.style.display = 'none';
-          modalImage.style.display = 'none';
-          btnToggleReveal.textContent = 'إظهار';
-          setAnswerButtonsEnabled(false);
-          btnToggleReveal.classList.add('reveal-pulse');
-          resetModalTimer();
-          modal.classList.add('active');
-          modal.setAttribute('aria-hidden', 'false');
+          openWordTile(tile, boardWords[i], i);
         });
         boardEl.appendChild(tile);
       }
