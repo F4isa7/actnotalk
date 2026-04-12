@@ -1956,7 +1956,7 @@
                             <i class="fas fa-users"></i>
                             اسم الفريق الأول
                         </label>
-                        <input type="text" id="teamOneName" class="form-input" placeholder="مثل: الشباب">
+                        <input type="text" id="teamOneName" class="form-input" placeholder="مثل: الشباب" dir="auto" inputmode="text" autocapitalize="words">
                     </div>
                     
                     <div class="form-group">
@@ -1964,7 +1964,7 @@
                             <i class="fas fa-users"></i>
                             اسم الفريق الثاني
                         </label>
-                        <input type="text" id="teamTwoName" class="form-input" placeholder="مثل: البنات">
+                        <input type="text" id="teamTwoName" class="form-input" placeholder="مثل: البنات" dir="auto" inputmode="text" autocapitalize="words">
                     </div>
                 </div>
             </div>
@@ -2759,11 +2759,19 @@
                 input.type = 'text';
                 input.className = 'player-input';
                 input.placeholder = 'اسم اللاعب';
+                input.setAttribute('dir', 'auto');
+                input.setAttribute('inputmode', 'text');
+                input.setAttribute('autocapitalize', 'words');
                 input.setAttribute('aria-label', `اسم اللاعب ${i}`);
                 const nameIndex = i - 1;
                 if (playerNames[i - 1]) {
                     input.value = playerNames[i - 1];
                 }
+                input.addEventListener('keydown', (event) => {
+                    if (event.key === ' ' || event.code === 'Space') {
+                        event.stopPropagation();
+                    }
+                });
                 input.addEventListener('input', () => {
                     playerNames[nameIndex] = input.value;
                     saveTeamSplitterState();
@@ -3538,7 +3546,21 @@
         }
         
         // Form validation on input
+        function isTypingField(element) {
+            return element instanceof HTMLElement
+                && (element.matches('input, textarea, select') || element.isContentEditable);
+        }
+
         [teamOneInput, teamTwoInput].forEach(input => {
+            if (!input) return;
+            input.setAttribute('dir', 'auto');
+            input.setAttribute('inputmode', 'text');
+            input.setAttribute('autocapitalize', 'words');
+            input.addEventListener('keydown', (event) => {
+                if (event.key === ' ' || event.code === 'Space') {
+                    event.stopPropagation();
+                }
+            });
             input.addEventListener('input', updateUI);
         });
 
@@ -3566,6 +3588,9 @@
 
         // Add keyboard shortcuts
         document.addEventListener('keydown', (e) => {
+            const isTypingTarget = isTypingField(e.target);
+            const isTypingActive = isTypingField(document.activeElement);
+
             // Ctrl/Cmd + Enter to start game
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 e.preventDefault();
@@ -3586,7 +3611,7 @@
             }
             
             // Space to toggle timer
-            if (e.key === ' ' && !e.target.matches('input, textarea')) {
+            if ((e.key === ' ' || e.code === 'Space') && !(isTypingTarget || isTypingActive)) {
                 e.preventDefault();
                 if (isTimerRunning) {
                     stopTimer();
