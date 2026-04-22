@@ -43,6 +43,12 @@ jobs:
             --exclude 'words-grid.html' \
             ./ _site/
 
+      - name: Validate ads.txt
+        shell: bash
+        run: |
+          test -f _site/ads.txt
+          grep -Fxq 'google.com, pub-8689281093776842, DIRECT, f08c47fec0942fa0' _site/ads.txt
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
