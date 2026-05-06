@@ -1819,20 +1819,6 @@
   </style>
 </head>
 <body>
-  <div class="side-ad side-ad-left" aria-hidden="true">
-    <div class="ad-slot ad-slot-side">
-      <span class="ad-slot-tag">Ad</span>
-      <div class="ad-slot-size">160 x 600</div>
-      <div class="ad-slot-text">مساحة إعلانية جانبية</div>
-    </div>
-  </div>
-  <div class="side-ad side-ad-right" aria-hidden="true">
-    <div class="ad-slot ad-slot-side">
-      <span class="ad-slot-tag">Ad</span>
-      <div class="ad-slot-size">160 x 600</div>
-      <div class="ad-slot-text">مساحة إعلانية جانبية</div>
-    </div>
-  </div>
   <div class="bg-watermark">
     <div class="logo-section">
       <div class="logo logo-image">
@@ -1878,21 +1864,18 @@
       </button>
     </div>
   </main>
-  <div class="banner-ad" aria-hidden="true">
-    <div class="ad-slot ad-slot-banner">
-      <span class="ad-slot-tag">Ad</span>
-      <div class="ad-slot-size">970 x 90</div>
-      <div class="ad-slot-text">مساحة بانر إعلاني لسطح المكتب</div>
-    </div>
-  </div>
   <div class="legal-links-bar">
-    <a class="legal-link" href="privacy/" data-legal-modal="privacy">
+    <a class="legal-link" href="privacy/">
       <i class="fas fa-shield-halved"></i>
       سياسة الخصوصية
     </a>
-    <a class="legal-link" href="contact/" data-legal-modal="contact">
+    <a class="legal-link" href="contact/">
       <i class="fas fa-envelope"></i>
       تواصل معنا
+    </a>
+    <a class="legal-link" href="about/">
+      <i class="fas fa-circle-info"></i>
+      عن ActNoTalk
     </a>
   </div>
 
@@ -2271,7 +2254,8 @@
 
     let timerEnabled = !!(data && (data.timerEnabled === true || data.timerEnabled === 'true'));
     let isAutoCloseOnTimeout = !!(data && (data.timerAutoClose === true || data.timerAutoClose === 'true'));
-    const SHOW_WORD_IMAGES = true;
+    // Keep the game centered on original gameplay instead of cover-art visuals.
+    const SHOW_WORD_IMAGES = false;
 
     const IMAGE_BASE_PATH = 'assets';
     const CATEGORY_IMAGE_FOLDERS = {
@@ -3309,11 +3293,11 @@
     const legalModalContent = {
       privacy: {
         title: 'سياسة الخصوصية',
-        text: 'الموقع لا يطلب حسابًا، ويستخدم التخزين المحلي فقط لحفظ إعدادات اللعب مثل المؤقت والفئات واستئناف الجلسة. وقد تتم إضافة خدمات إعلانية لاحقًا مثل Google AdSense.'
+        text: 'توضح صفحة سياسة الخصوصية طريقة استخدام التخزين المحلي وملفات تعريف الارتباط وخدمات Google AdSense داخل الموقع.'
       },
       contact: {
         title: 'تواصل معنا',
-        text: 'للتواصل العام أو ملاحظات الاستخدام يمكن التواصل على: actnotalk@gmail.com'
+        text: 'للتواصل العام أو ملاحظات الاستخدام يمكن استخدام صفحة تواصل معنا أو البريد: actnotalk@gmail.com'
       }
     };
 
