@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://actnotalk.com/</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://actnotalk.com/about/</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://actnotalk.com/guide/</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://actnotalk.com/categories/</loc>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://actnotalk.com/privacy/</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://actnotalk.com/contact/</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
 </urlset>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="لعبة ولا كلمة هي لعبة تمثيل بدون كلام تعتمد على الإيماءات بصمت. اختر الفئات وابدأ التحدي مع أصدقائك.">
+    <meta name="description" content="ActNoTalk هي لعبة ولا كلمة عربية مع تقسيم فرق، فئات جاهزة، دليل لعب واضح، ومحتوى منظم للجلسات العائلية وجلسات الأصدقاء.">
     <meta name="keywords" content="لعبة ولا كلمة, لعبة تمثيل بدون كلام, تمثيل صامت, الإيماءات بصمت, مسرحيات, أفلام, مسلسلات, أغاني, لعبة">
     <meta name="author" content="ActNoTalk | لعبة ولا كلمة">
     <meta name="application-name" content="ActNoTalk | لعبة ولا كلمة">
@@ -13,7 +13,7 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="ActNoTalk | لعبة ولا كلمة">
-    <meta property="og:description" content="لعبة تمثيل بدون كلام تعتمد على الإيماءات بصمت. اختر الفئات وابدأ التحدي مع أصدقائك.">
+    <meta property="og:description" content="لعبة ولا كلمة عربية مع تقسيم فرق، فئات جاهزة، ودليل لعب واضح للجلسات العائلية وجلسات الأصدقاء.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://actnotalk.com/">
     <meta property="og:image" content="https://actnotalk.com/favicon-512.png">
@@ -361,6 +361,89 @@
             color: var(--secondary-color);
             border-color: rgba(249, 170, 51, 0.35);
         }
+        .editorial-section {
+            padding: 0 20px 2rem;
+        }
+        .editorial-surface {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(74, 101, 114, 0.12);
+        }
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(249, 170, 51, 0.16);
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 0.9rem;
+        }
+        .editorial-heading h2 {
+            font-family: 'El Messiri', cursive;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+        .editorial-heading p {
+            color: var(--accent-color);
+            line-height: 1.95;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+        .editorial-grid,
+        .editorial-columns {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .editorial-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .editorial-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        .content-card,
+        .content-block {
+            background: rgba(74, 101, 114, 0.06);
+            border: 1px solid rgba(74, 101, 114, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+        .content-card h3,
+        .content-block h3 {
+            font-family: 'El Messiri', cursive;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.65rem;
+        }
+        .content-card p,
+        .content-block p {
+            color: var(--accent-color);
+            line-height: 1.9;
+            margin: 0;
+        }
+        .editorial-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            border-radius: var(--radius-md);
+            background: rgba(249, 170, 51, 0.12);
+            border: 1px solid rgba(249, 170, 51, 0.28);
+            color: var(--accent-color);
+            font-weight: 600;
+            line-height: 1.9;
+        }
+        .editorial-note a {
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+        .faq-visible {
+            margin-top: 1.8rem;
+        }
 
         /* SEO About + FAQ */
         .seo-section {
@@ -401,7 +484,7 @@
         }
 
         .seo-list li::before {
-            content: "â€¢";
+            content: "\2022";
             color: var(--secondary-color);
             margin-left: 0.5rem;
         }
@@ -415,7 +498,7 @@
             line-height: 1.7;
         }
         .about-list li::before {
-            content: "â€¢";
+            content: "\2022";
             color: var(--secondary-color);
             margin-left: 0.5rem;
         }
@@ -1370,6 +1453,7 @@
             justify-content: center;
             gap: 0.5rem;
             min-width: 160px;
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -2062,34 +2146,6 @@
 </head>
 
 <body>
-    <div class="side-ad side-ad-left" aria-hidden="true">
-        <div class="ad-slot ad-slot-side">
-            <span class="ad-slot-tag">Ad</span>
-            <div class="ad-slot-size">160 x 600</div>
-            <div class="ad-slot-text">مساحة إعلانية جانبية</div>
-        </div>
-    </div>
-    <div class="side-ad side-ad-right" aria-hidden="true">
-        <div class="ad-slot ad-slot-side">
-            <span class="ad-slot-tag">Ad</span>
-            <div class="ad-slot-size">160 x 600</div>
-            <div class="ad-slot-text">مساحة إعلانية جانبية</div>
-        </div>
-    </div>
-    <div class="side-ad side-ad-left side-ad-lower" aria-hidden="true">
-        <div class="ad-slot ad-slot-side">
-            <span class="ad-slot-tag">Ad</span>
-            <div class="ad-slot-size">160 x 600</div>
-            <div class="ad-slot-text">إعلان إضافي لسطح المكتب</div>
-        </div>
-    </div>
-    <div class="side-ad side-ad-right side-ad-lower" aria-hidden="true">
-        <div class="ad-slot ad-slot-side">
-            <span class="ad-slot-tag">Ad</span>
-            <div class="ad-slot-size">160 x 600</div>
-            <div class="ad-slot-text">إعلان إضافي لسطح المكتب</div>
-        </div>
-    </div>
     <!-- Header -->
     <header class="site-header">
         <div class="header-content">
@@ -2108,6 +2164,16 @@
             <div class="banner-content">
                 <h1>لعبة ولا كلمة</h1>
                 <h2>ولا كلمة لعبة تحديات جماعية تعتمد على الإيماءات بصمت<br>اختر الفئات وابدأ التحدي مع أصدقائك</h2>
+                <div class="banner-actions">
+                    <a class="btn btn-primary" href="guide/">
+                        <i class="fas fa-book-open"></i>
+                        دليل اللعب
+                    </a>
+                    <a class="btn btn-secondary" href="categories/">
+                        <i class="fas fa-layer-group"></i>
+                        الفئات المتاحة
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -2204,6 +2270,96 @@
         </div>
     </section>
 
+    <section class="container editorial-section" aria-labelledby="siteGuideTitle">
+        <div class="editorial-surface">
+            <div class="editorial-heading">
+                <span class="section-kicker">محتوى أصلي للموقع</span>
+                <h2 id="siteGuideTitle">استخدم ActNoTalk كلوحة لعب جاهزة بدل الأوراق العشوائية</h2>
+                <p>
+                    ActNoTalk ليس مجرد قائمة كلمات سريعة، بل صفحة لعب عربية مصممة لتنظيم الجولة من البداية إلى النهاية:
+                    تسمية الفريقين، اختيار الفئات المناسبة، تقسيم اللاعبين عند الحاجة، وتشغيل المؤقت إذا أردت جلسة أسرع
+                    وأكثر حماسًا. هذا المحتوى موجود هنا ليشرح طريقة الاستخدام بوضوح حتى يفهم الزائر فائدة الموقع قبل أن يبدأ اللعب.
+                </p>
+            </div>
+
+            <div class="editorial-grid" aria-label="مزايا الصفحة الرئيسية">
+                <article class="content-card">
+                    <h3>ابدأ الجولة خلال دقيقة</h3>
+                    <p>اكتب اسمَي الفريقين، اختر الفئات التي تناسب المجموعة، ثم ابدأ الجولة مباشرة بدون تسجيل حساب أو خطوات معقدة.</p>
+                </article>
+                <article class="content-card">
+                    <h3>تقسيم فرق عادل</h3>
+                    <p>أداة تقسيم الفرق تساعدك إذا كان عدد اللاعبين كبيرًا أو غير متوازن، وهذا يوفر وقتًا ويقلل الجدال قبل بداية التحدي.</p>
+                </article>
+                <article class="content-card">
+                    <h3>مؤقت ونقاط في نفس المكان</h3>
+                    <p>بدل استخدام تطبيق مؤقت منفصل أو متابعة النقاط يدويًا، تبقى الجولة كلها داخل نفس الواجهة حتى لا ينقطع اللعب.</p>
+                </article>
+            </div>
+
+            <div class="editorial-columns">
+                <article class="content-block">
+                    <h3>طريقة اللعب المختصرة</h3>
+                    <ul class="about-list">
+                        <li>قسّم الحضور إلى فريقين وحدد اسمًا واضحًا لكل فريق.</li>
+                        <li>اختر فئة أو أكثر بحسب أعمار المجموعة واهتماماتها.</li>
+                        <li>يأخذ أحد اللاعبين كلمة ويمثلها بصمت بينما يحاول فريقه التخمين قبل انتهاء الوقت.</li>
+                        <li>إذا كانت الإجابة صحيحة تُحتسب نقطة، وإذا تعذر التخمين ينتقل الدور للجولة التالية.</li>
+                    </ul>
+                </article>
+                <article class="content-block">
+                    <h3>كيف تختار الفئات المناسبة</h3>
+                    <ul class="about-list">
+                        <li>فئة المسرحيات ممتازة للجلسات التي تحب العناوين المعروفة والتمثيل الواضح.</li>
+                        <li>المسلسلات الخليجية مناسبة للمجموعات التي تتشارك مرجعًا ثقافيًا قريبًا.</li>
+                        <li>الأغاني العربية أو الخليجية تصلح للجولات السريعة عندما تريد كلمات أسهل نسبيًا.</li>
+                        <li>يمكن المزج بين أكثر من فئة لتفادي التكرار وإعطاء كل فريق فرصة عادلة.</li>
+                    </ul>
+                </article>
+                <article class="content-block">
+                    <h3>لماذا هذا الموقع مفيد عمليًا</h3>
+                    <ul class="about-list">
+                        <li>يجمع القواعد والاختيارات والنتيجة في مكان واحد بدل التنقل بين عدة أدوات.</li>
+                        <li>يحفظ بعض الإعدادات محليًا داخل المتصفح لتسهيل استكمال الجلسة.</li>
+                        <li>يقدم واجهة عربية مباشرة مناسبة للجوال والكمبيوتر.</li>
+                        <li>يوفر صفحات مساعدة مستقلة تشرح الفئات وطريقة اللعب بدل الاكتفاء بواجهة مختصرة.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="editorial-note">
+                إذا كنت تريد شرحًا أوسع للقوانين أو وصفًا لكل فئة، انتقل إلى
+                <a href="guide/">دليل اللعب</a> و<a href="categories/">الفئات المتاحة</a> و<a href="about/">عن ActNoTalk</a>.
+                هذه الصفحات تضيف شرحًا واضحًا ومفهرسًا بدل الاعتماد على النوافذ الداخلية فقط.
+            </div>
+
+            <section class="faq-visible" aria-labelledby="homepageFaqTitle">
+                <h3 class="faq-title" id="homepageFaqTitle">
+                    <i class="fas fa-circle-question"></i>
+                    أسئلة شائعة قبل بدء اللعب
+                </h3>
+                <div class="faq-grid" aria-label="أسئلة شائعة في الصفحة الرئيسية">
+                    <div class="faq-card">
+                        <h4>هل أحتاج حسابًا أو تسجيل دخول؟</h4>
+                        <p>لا. الموقع مصمم ليبدأ اللعب مباشرة، وكل ما تحتاجه هو اختيار الفرق والفئات المناسبة للجلسة.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>هل أستطيع اللعب بدون مؤقت؟</h4>
+                        <p>نعم. المؤقت اختياري ويمكن إيقافه بالكامل إذا كانت المجموعة تفضّل اللعب الهادئ بدون ضغط زمني.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>ما أفضل فئة للجلسات العائلية؟</h4>
+                        <p>غالبًا تبدأ المجموعات العائلية بالمسرحيات أو المسلسلات الخليجية، ثم تضيف الأغاني إذا أرادت جولات أسرع.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h4>هل يمكن استخدام الموقع على الجوال؟</h4>
+                        <p>نعم. الواجهة مضبوطة لتعمل على الهاتف والكمبيوتر بحيث تبقى الكلمات وأزرار الجولة واضحة أثناء اللعب.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
     <section class="about-footer">
         <div class="about-actions">
             <button class="btn btn-secondary" id="aboutOpenBtn">
@@ -2212,13 +2368,17 @@
             </button>
         </div>
         <div class="legal-links">
-            <a class="legal-link" href="privacy/" data-legal-modal="privacy">
+            <a class="legal-link" href="privacy/">
                 <i class="fas fa-shield-halved"></i>
                 سياسة الخصوصية
             </a>
-            <a class="legal-link" href="contact/" data-legal-modal="contact">
+            <a class="legal-link" href="contact/">
                 <i class="fas fa-envelope"></i>
                 تواصل معنا
+            </a>
+            <a class="legal-link" href="about/">
+                <i class="fas fa-circle-info"></i>
+                عن ActNoTalk
             </a>
         </div>
     </section>
@@ -3761,11 +3921,11 @@
         const legalModalContent = {
             privacy: {
                 title: 'سياسة الخصوصية',
-                text: 'الموقع لا يطلب حسابًا، ويستخدم التخزين المحلي فقط لحفظ إعدادات اللعب مثل المؤقت والفئات واستئناف الجلسة. وقد تتم إضافة خدمات إعلانية لاحقًا مثل Google AdSense.'
+                text: 'توضح صفحة سياسة الخصوصية طريقة استخدام التخزين المحلي وملفات تعريف الارتباط وخدمات Google AdSense داخل الموقع.'
             },
             contact: {
                 title: 'تواصل معنا',
-                text: 'للتواصل العام أو ملاحظات الاستخدام يمكن التواصل على: actnotalk@gmail.com'
+                text: 'للتواصل العام أو ملاحظات الاستخدام يمكن استخدام صفحة تواصل معنا أو البريد: actnotalk@gmail.com'
             }
         };
 
