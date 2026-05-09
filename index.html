@@ -8,8 +8,8 @@
     <meta name="description" content="ActNoTalk هي لعبة ولا كلمة عربية مع تقسيم فرق، فئات جاهزة، دليل لعب واضح، ومحتوى منظم للجلسات العائلية وجلسات الأصدقاء.">
     <meta name="keywords" content="لعبة ولا كلمة, لعبة تمثيل بدون كلام, تمثيل صامت, الإيماءات بصمت, مسرحيات, أفلام, مسلسلات, أغاني, لعبة">
     <meta name="author" content="ActNoTalk | لعبة ولا كلمة">
-    <meta name="application-name" content="ActNoTalk | لعبة ولا كلمة">
-    <meta name="apple-mobile-web-app-title" content="ActNoTalk | لعبة ولا كلمة">
+    <meta name="application-name" content="لعبة ولا كلمة">
+    <meta name="apple-mobile-web-app-title" content="لعبة ولا كلمة">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="ActNoTalk | لعبة ولا كلمة">
@@ -17,8 +17,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://actnotalk.com/">
     <meta property="og:image" content="https://actnotalk.com/favicon-512.png">
-    <meta property="og:site_name" content="ActNoTalk | لعبة ولا كلمة">
+    <meta property="og:site_name" content="لعبة ولا كلمة">
     <link rel="canonical" href="https://actnotalk.com/">
+    <script>
+        if (window.location.pathname.endsWith('/index.html')) {
+            const cleanPath = window.location.pathname.slice(0, -'index.html'.length);
+            window.history.replaceState({}, '', `${cleanPath}${window.location.search}${window.location.hash}`);
+        }
+    </script>
     
     <title>ActNoTalk | لعبة ولا كلمة</title>
     
@@ -2038,9 +2044,7 @@
                 display: block;
             }
             .footer-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
+                display: block;
                 padding-right: 0;
                 width: 100%;
             }
@@ -2050,6 +2054,7 @@
             }
             .footer-column-secondary {
                 width: 100%;
+                margin-top: 0.7rem;
                 margin-left: 0;
                 transform: none;
             }
@@ -2512,7 +2517,7 @@
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "ActNoTalk | لعبة ولا كلمة",
+            "name": "لعبة ولا كلمة",
             "alternateName": ["ActNoTalk", "لعبة ولا كلمة", "ولا كلمة", "actnotalk.com"],
             "url": "https://actnotalk.com/",
             "logo": "https://actnotalk.com/favicon-192.png",
@@ -2524,7 +2529,7 @@
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "ActNoTalk | لعبة ولا كلمة",
+            "name": "لعبة ولا كلمة",
             "alternateName": ["ActNoTalk", "لعبة ولا كلمة", "ولا كلمة", "actnotalk.com"],
             "url": "https://actnotalk.com/"
         }
