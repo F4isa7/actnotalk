@@ -2335,57 +2335,6 @@
         </div>
     </section>
 
-    <section class="container editorial-section" aria-labelledby="siteGuideTitle">
-        <div class="editorial-surface">
-            <div class="editorial-heading">
-                <span class="section-kicker">محتوى أصلي للموقع</span>
-                <h2 id="siteGuideTitle">استخدم ActNoTalk كلوحة لعب جاهزة بدل الأوراق العشوائية</h2>
-                <p>
-                    ActNoTalk صفحة لعب عربية تنظّم الجولة من البداية إلى النهاية: تسمية الفريقين، اختيار الفئات المناسبة،
-                    تقسيم اللاعبين عند الحاجة، وتشغيل المؤقت إذا رغبت بجولة أسرع. الهدف هنا أن يفهم الزائر فائدة الموقع بسرعة
-                    قبل أن يبدأ اللعب.
-                </p>
-            </div>
-
-            <div class="editorial-grid" aria-label="مزايا الصفحة الرئيسية">
-                <article class="content-card">
-                    <h3>ابدأ الجولة خلال دقيقة</h3>
-                    <p>اكتب اسمَي الفريقين، اختر الفئات التي تناسب المجموعة، ثم ابدأ الجولة مباشرة بدون تسجيل حساب أو خطوات معقدة.</p>
-                </article>
-                <article class="content-card">
-                    <h3>تقسيم فرق عادل</h3>
-                    <p>أداة تقسيم الفرق تساعدك إذا كان عدد اللاعبين كبيرًا أو غير متوازن، وهذا يوفر وقتًا ويقلل الجدال قبل بداية التحدي.</p>
-                </article>
-            </div>
-
-            <div class="editorial-columns">
-                <article class="content-block">
-                    <h3>قبل كشف الكلمة</h3>
-                    <ul class="about-list">
-                        <li>قسّم الحضور إلى فريقين وحدد اسمًا واضحًا لكل فريق.</li>
-                        <li>في كل دور يرشّح الفريق لاعبًا واحدًا فقط لتمثيل الكلمة.</li>
-                        <li>اللاعب المرشّح وحده يشاهد الكلمة، وبقية فريقه لا يرونها.</li>
-                        <li>بعدها يمثلها بصمت ويحاول فريقه التخمين قبل انتهاء الوقت.</li>
-                    </ul>
-                </article>
-                <article class="content-block">
-                    <h3>كيف تختار الفئات المناسبة</h3>
-                    <ul class="about-list">
-                        <li>فئة المسرحيات ممتازة للجلسات التي تحب العناوين المعروفة والتمثيل الواضح.</li>
-                        <li>المسلسلات الخليجية مناسبة للمجموعات التي تتشارك مرجعًا ثقافيًا قريبًا.</li>
-                        <li>الأغاني العربية أو الخليجية تصلح للجولات السريعة عندما تريد كلمات أسهل نسبيًا.</li>
-                        <li>يمكن المزج بين أكثر من فئة لتفادي التكرار وإعطاء كل فريق فرصة عادلة.</li>
-                    </ul>
-                </article>
-            </div>
-
-            <div class="editorial-note">
-                شرح الخطوات كاملًا موجود في <a href="guide/">دليل اللعب</a>، وتفاصيل الأنواع موجودة في <a href="categories/">الفئات المتاحة</a>.
-            </div>
-
-        </div>
-    </section>
-
     <section class="about-footer">
         <div class="footer-surface">
             <div class="footer-grid">
@@ -2543,7 +2492,7 @@
     </div>
 
     <div class="modal-overlay" id="legalModal">
-        <div class="modal-content legal-mini-modal">
+        <div class="modal-content legal-mini-modal" id="legalModalPanel">
             <div class="modal-header">
                 <h2 id="legalModalTitle">معلومة</h2>
                 <button class="modal-close" id="legalModalClose" type="button" aria-label="إغلاق">
@@ -2551,7 +2500,7 @@
                 </button>
             </div>
             <div class="modal-body legal-mini-body">
-                <p id="legalModalText"></p>
+                <div id="legalModalText"></div>
             </div>
         </div>
     </div>
@@ -3088,6 +3037,7 @@
         const faqClose = document.getElementById('faqClose');
         const legalLinks = document.querySelectorAll('[data-legal-modal]');
         const legalModal = document.getElementById('legalModal');
+        const legalModalPanel = document.getElementById('legalModalPanel');
         const legalModalTitle = document.getElementById('legalModalTitle');
         const legalModalText = document.getElementById('legalModalText');
         const legalModalClose = document.getElementById('legalModalClose');
@@ -3970,7 +3920,52 @@
         const legalModalContent = {
             about: {
                 title: 'عن ActNoTalk',
-                text: 'ActNoTalk موقع عربي للعبة ولا كلمة يساعد على تنظيم الجولة واختيار الفئات وبدء اللعب بسرعة من صفحة واحدة.'
+                html: `
+                    <section class="seo-section" aria-label="عن ActNoTalk">
+                        <div class="editorial-heading">
+                            <span class="section-kicker">محتوى أصلي للموقع</span>
+                            <h2>استخدم ActNoTalk كلوحة لعب جاهزة بدل الأوراق العشوائية</h2>
+                            <p>
+                                ActNoTalk صفحة لعب عربية تنظّم الجولة من البداية إلى النهاية: تسمية الفريقين، اختيار الفئات المناسبة،
+                                تقسيم اللاعبين عند الحاجة، وتشغيل المؤقت إذا رغبت بجولة أسرع. الهدف هنا أن يفهم الزائر فائدة الموقع بسرعة
+                                قبل أن يبدأ اللعب.
+                            </p>
+                        </div>
+                        <div class="editorial-grid" aria-label="مزايا صفحة عن ActNoTalk">
+                            <article class="content-card">
+                                <h3>ابدأ الجولة خلال دقيقة</h3>
+                                <p>اكتب اسمَي الفريقين، اختر الفئات التي تناسب المجموعة، ثم ابدأ الجولة مباشرة بدون تسجيل حساب أو خطوات معقدة.</p>
+                            </article>
+                            <article class="content-card">
+                                <h3>تقسيم فرق عادل</h3>
+                                <p>أداة تقسيم الفرق تساعدك إذا كان عدد اللاعبين كبيرًا أو غير متوازن، وهذا يوفر وقتًا ويقلل الجدال قبل بداية التحدي.</p>
+                            </article>
+                        </div>
+                        <div class="editorial-columns">
+                            <article class="content-block">
+                                <h3>قبل كشف الكلمة</h3>
+                                <ul class="about-list">
+                                    <li>قسّم الحضور إلى فريقين وحدد اسمًا واضحًا لكل فريق.</li>
+                                    <li>في كل دور يرشّح الفريق لاعبًا واحدًا فقط لتمثيل الكلمة.</li>
+                                    <li>اللاعب المرشّح وحده يشاهد الكلمة، وبقية فريقه لا يرونها.</li>
+                                    <li>بعدها يمثلها بصمت ويحاول فريقه التخمين قبل انتهاء الوقت.</li>
+                                </ul>
+                            </article>
+                            <article class="content-block">
+                                <h3>كيف تختار الفئات المناسبة</h3>
+                                <ul class="about-list">
+                                    <li>فئة المسرحيات ممتازة للجلسات التي تحب العناوين المعروفة والتمثيل الواضح.</li>
+                                    <li>المسلسلات الخليجية مناسبة للمجموعات التي تتشارك مرجعًا ثقافيًا قريبًا.</li>
+                                    <li>الأغاني العربية أو الخليجية تصلح للجولات السريعة عندما تريد كلمات أسهل نسبيًا.</li>
+                                    <li>يمكن المزج بين أكثر من فئة لتفادي التكرار وإعطاء كل فريق فرصة عادلة.</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="editorial-note">
+                            شرح الخطوات كاملًا موجود في <a href="guide/">دليل اللعب</a>، وتفاصيل الأنواع موجودة في <a href="categories/">الفئات المتاحة</a>.
+                        </div>
+                    </section>
+                `
             },
             privacy: {
                 title: 'سياسة الخصوصية',
@@ -3986,7 +3981,11 @@
             const content = legalModalContent[type];
             if (!content || !legalModal || !legalModalTitle || !legalModalText) return;
             legalModalTitle.textContent = content.title;
-            legalModalText.textContent = content.text;
+            legalModalText.innerHTML = content.html || `<p>${content.text}</p>`;
+            if (legalModalPanel) {
+                legalModalPanel.classList.toggle('about-modal-content', Boolean(content.html));
+                legalModalPanel.classList.toggle('legal-mini-modal', !content.html);
+            }
             legalModal.classList.add('active');
         }
 
