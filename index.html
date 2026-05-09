@@ -332,34 +332,93 @@
             border-radius: var(--radius-sm);
         }
         .about-footer {
-            padding: 0 20px 2rem;
+            margin-top: 2rem;
+            padding: 2.8rem 20px 1.75rem;
+            background: rgba(255, 255, 255, 0.97);
+            border-top: 1px solid rgba(74, 101, 114, 0.14);
+            box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.08);
         }
-        .legal-links {
-            margin-top: 1rem;
+        .footer-surface {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+        .footer-grid {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.75rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: clamp(2rem, 5vw, 4rem);
+            padding-right: 3.1rem;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
         }
-        .legal-link {
+        .footer-column {
+            width: fit-content;
+            max-width: 100%;
+            min-width: 0;
+            flex: 0 0 auto;
+        }
+        .footer-column-secondary {
+            margin-left: 0;
+            transform: none;
+        }
+        .footer-title {
+            margin: 0 0 1rem;
+            font-family: 'El Messiri', cursive;
+            color: var(--dark-color);
+            font-size: 1.15rem;
+        }
+        .footer-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .footer-link,
+        .footer-link-button {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.45rem;
-            padding: 0.7rem 1rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.92);
-            color: var(--primary-color);
+            color: var(--accent-color);
             text-decoration: none;
-            font-weight: 700;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(74, 101, 114, 0.12);
+            font-weight: 500;
+            line-height: 1.8;
             transition: var(--transition);
         }
-        .legal-link:hover {
-            transform: translateY(-1px);
+        .footer-link-button {
+            appearance: none;
+            background: none;
+            border: 0;
+            padding: 0;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.8;
+            color: inherit;
+            text-align: right;
+            cursor: pointer;
+        }
+        .footer-link:hover,
+        .footer-link-button:hover {
             color: var(--secondary-color);
-            border-color: rgba(249, 170, 51, 0.35);
+        }
+        .footer-meta {
+            margin: 0;
+            color: var(--accent-color);
+            line-height: 1.9;
+            font-size: 0.96rem;
+            max-width: 30ch;
+        }
+        .footer-copyright {
+            width: 100%;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .footer-copyright .footer-meta {
+            max-width: none;
+            display: inline-block;
         }
         .editorial-section {
             padding: 0 20px 2rem;
@@ -444,6 +503,25 @@
         .faq-visible {
             margin-top: 1.8rem;
         }
+        .faq-teaser {
+            margin-top: 1.8rem;
+            display: grid;
+            gap: 1rem;
+            align-items: center;
+        }
+        .faq-teaser p {
+            margin: 0;
+            color: var(--accent-color);
+            line-height: 1.9;
+        }
+        .faq-teaser-actions {
+            display: flex;
+            justify-content: center;
+        }
+        .faq-launch-btn {
+            min-width: 220px;
+            border-radius: var(--radius-sm);
+        }
 
         /* SEO About + FAQ */
         .seo-section {
@@ -511,32 +589,6 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .faq-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .faq-card {
-            background: #fff;
-            border-radius: var(--radius-md);
-            padding: 1rem 1.25rem;
-            border: 2px solid var(--light-color);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .faq-card h4 {
-            margin: 0 0 0.5rem;
-            font-size: 1rem;
-            color: var(--dark-color);
-        }
-
-        .faq-card p {
-            margin: 0;
-            color: var(--accent-color);
-            line-height: 1.7;
-            font-size: 0.95rem;
         }
 
         /* Settings Panel */
@@ -1773,6 +1825,11 @@
             .categories-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1973,7 +2030,28 @@
             }
 
             .about-footer {
-                padding: 0 16px calc(1.5rem + env(safe-area-inset-bottom, 0px));
+                margin-top: 1.5rem;
+                padding: 2rem 16px calc(1.5rem + env(safe-area-inset-bottom, 0px));
+            }
+            .footer-surface {
+                padding: 0;
+                display: block;
+            }
+            .footer-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                padding-right: 0;
+                width: 100%;
+            }
+            .footer-column {
+                width: 100%;
+                max-width: none;
+            }
+            .footer-column-secondary {
+                width: 100%;
+                margin-left: 0;
+                transform: none;
             }
 
             .modal-overlay {
@@ -2138,9 +2216,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .faq-card {
-                padding: 0.9rem 1rem;
-            }
         }
     </style>
 </head>
@@ -2164,16 +2239,6 @@
             <div class="banner-content">
                 <h1>لعبة ولا كلمة</h1>
                 <h2>ولا كلمة لعبة تحديات جماعية تعتمد على الإيماءات بصمت<br>اختر الفئات وابدأ التحدي مع أصدقائك</h2>
-                <div class="banner-actions">
-                    <a class="btn btn-primary" href="guide/">
-                        <i class="fas fa-book-open"></i>
-                        دليل اللعب
-                    </a>
-                    <a class="btn btn-secondary" href="categories/">
-                        <i class="fas fa-layer-group"></i>
-                        الفئات المتاحة
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -2276,9 +2341,9 @@
                 <span class="section-kicker">محتوى أصلي للموقع</span>
                 <h2 id="siteGuideTitle">استخدم ActNoTalk كلوحة لعب جاهزة بدل الأوراق العشوائية</h2>
                 <p>
-                    ActNoTalk ليس مجرد قائمة كلمات سريعة، بل صفحة لعب عربية مصممة لتنظيم الجولة من البداية إلى النهاية:
-                    تسمية الفريقين، اختيار الفئات المناسبة، تقسيم اللاعبين عند الحاجة، وتشغيل المؤقت إذا أردت جلسة أسرع
-                    وأكثر حماسًا. هذا المحتوى موجود هنا ليشرح طريقة الاستخدام بوضوح حتى يفهم الزائر فائدة الموقع قبل أن يبدأ اللعب.
+                    ActNoTalk صفحة لعب عربية تنظّم الجولة من البداية إلى النهاية: تسمية الفريقين، اختيار الفئات المناسبة،
+                    تقسيم اللاعبين عند الحاجة، وتشغيل المؤقت إذا رغبت بجولة أسرع. الهدف هنا أن يفهم الزائر فائدة الموقع بسرعة
+                    قبل أن يبدأ اللعب.
                 </p>
             </div>
 
@@ -2291,20 +2356,16 @@
                     <h3>تقسيم فرق عادل</h3>
                     <p>أداة تقسيم الفرق تساعدك إذا كان عدد اللاعبين كبيرًا أو غير متوازن، وهذا يوفر وقتًا ويقلل الجدال قبل بداية التحدي.</p>
                 </article>
-                <article class="content-card">
-                    <h3>مؤقت ونقاط في نفس المكان</h3>
-                    <p>بدل استخدام تطبيق مؤقت منفصل أو متابعة النقاط يدويًا، تبقى الجولة كلها داخل نفس الواجهة حتى لا ينقطع اللعب.</p>
-                </article>
             </div>
 
             <div class="editorial-columns">
                 <article class="content-block">
-                    <h3>طريقة اللعب المختصرة</h3>
+                    <h3>قبل كشف الكلمة</h3>
                     <ul class="about-list">
                         <li>قسّم الحضور إلى فريقين وحدد اسمًا واضحًا لكل فريق.</li>
-                        <li>اختر فئة أو أكثر بحسب أعمار المجموعة واهتماماتها.</li>
-                        <li>يأخذ أحد اللاعبين كلمة ويمثلها بصمت بينما يحاول فريقه التخمين قبل انتهاء الوقت.</li>
-                        <li>إذا كانت الإجابة صحيحة تُحتسب نقطة، وإذا تعذر التخمين ينتقل الدور للجولة التالية.</li>
+                        <li>في كل دور يرشّح الفريق لاعبًا واحدًا فقط لتمثيل الكلمة.</li>
+                        <li>اللاعب المرشّح وحده يشاهد الكلمة، وبقية فريقه لا يرونها.</li>
+                        <li>بعدها يمثلها بصمت ويحاول فريقه التخمين قبل انتهاء الوقت.</li>
                     </ul>
                 </article>
                 <article class="content-block">
@@ -2316,70 +2377,55 @@
                         <li>يمكن المزج بين أكثر من فئة لتفادي التكرار وإعطاء كل فريق فرصة عادلة.</li>
                     </ul>
                 </article>
-                <article class="content-block">
-                    <h3>لماذا هذا الموقع مفيد عمليًا</h3>
-                    <ul class="about-list">
-                        <li>يجمع القواعد والاختيارات والنتيجة في مكان واحد بدل التنقل بين عدة أدوات.</li>
-                        <li>يحفظ بعض الإعدادات محليًا داخل المتصفح لتسهيل استكمال الجلسة.</li>
-                        <li>يقدم واجهة عربية مباشرة مناسبة للجوال والكمبيوتر.</li>
-                        <li>يوفر صفحات مساعدة مستقلة تشرح الفئات وطريقة اللعب بدل الاكتفاء بواجهة مختصرة.</li>
-                    </ul>
-                </article>
             </div>
 
             <div class="editorial-note">
-                إذا كنت تريد شرحًا أوسع للقوانين أو وصفًا لكل فئة، انتقل إلى
-                <a href="guide/">دليل اللعب</a> و<a href="categories/">الفئات المتاحة</a> و<a href="about/">عن ActNoTalk</a>.
-                هذه الصفحات تضيف شرحًا واضحًا ومفهرسًا بدل الاعتماد على النوافذ الداخلية فقط.
+                شرح الخطوات كاملًا موجود في <a href="guide/">دليل اللعب</a>، وتفاصيل الأنواع موجودة في <a href="categories/">الفئات المتاحة</a>.
             </div>
 
-            <section class="faq-visible" aria-labelledby="homepageFaqTitle">
-                <h3 class="faq-title" id="homepageFaqTitle">
-                    <i class="fas fa-circle-question"></i>
-                    أسئلة شائعة قبل بدء اللعب
-                </h3>
-                <div class="faq-grid" aria-label="أسئلة شائعة في الصفحة الرئيسية">
-                    <div class="faq-card">
-                        <h4>هل أحتاج حسابًا أو تسجيل دخول؟</h4>
-                        <p>لا. الموقع مصمم ليبدأ اللعب مباشرة، وكل ما تحتاجه هو اختيار الفرق والفئات المناسبة للجلسة.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h4>هل أستطيع اللعب بدون مؤقت؟</h4>
-                        <p>نعم. المؤقت اختياري ويمكن إيقافه بالكامل إذا كانت المجموعة تفضّل اللعب الهادئ بدون ضغط زمني.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h4>ما أفضل فئة للجلسات العائلية؟</h4>
-                        <p>غالبًا تبدأ المجموعات العائلية بالمسرحيات أو المسلسلات الخليجية، ثم تضيف الأغاني إذا أرادت جولات أسرع.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h4>هل يمكن استخدام الموقع على الجوال؟</h4>
-                        <p>نعم. الواجهة مضبوطة لتعمل على الهاتف والكمبيوتر بحيث تبقى الكلمات وأزرار الجولة واضحة أثناء اللعب.</p>
-                    </div>
-                </div>
-            </section>
         </div>
     </section>
 
     <section class="about-footer">
-        <div class="about-actions">
-            <button class="btn btn-secondary" id="aboutOpenBtn">
-                <i class="fas fa-circle-info"></i>
-                عن اللعبة
-            </button>
-        </div>
-        <div class="legal-links">
-            <a class="legal-link" href="privacy/">
-                <i class="fas fa-shield-halved"></i>
-                سياسة الخصوصية
-            </a>
-            <a class="legal-link" href="contact/">
-                <i class="fas fa-envelope"></i>
-                تواصل معنا
-            </a>
-            <a class="legal-link" href="about/">
-                <i class="fas fa-circle-info"></i>
-                عن ActNoTalk
-            </a>
+        <div class="footer-surface">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <ul class="footer-list">
+                        <li>
+                            <button class="footer-link-button" type="button" data-legal-modal="about">
+                                عن ActNoTalk
+                            </button>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="guide/">
+                                دليل اللعب
+                            </a>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="contact/">
+                                تواصل معنا
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-column-secondary">
+                    <ul class="footer-list">
+                        <li>
+                            <button class="footer-link-button" id="faqOpenBtn" type="button" aria-haspopup="dialog" aria-controls="faqModal">
+                                الأسئلة الشائعة
+                            </button>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="privacy/">
+                                سياسة الخصوصية
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p class="footer-meta">ActNoTalk © 2026</p>
+            </div>
         </div>
     </section>
 
@@ -2473,44 +2519,24 @@
         </div>
     </div>
 
-    <!-- About Game Modal -->
-    <div class="modal-overlay" id="aboutModal">
+    <div class="modal-overlay" id="faqModal">
         <div class="modal-content about-modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-circle-info"></i> عن لعبة ولا كلمة</h2>
-                <button class="modal-close" id="aboutClose">
+                <h2><i class="fas fa-circle-question"></i> أسئلة شائعة</h2>
+                <button class="modal-close" id="faqClose" type="button" aria-label="إغلاق">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <section class="seo-section" aria-labelledby="aboutGameTitle">
-                    <p class="seo-text">
-                        ولا كلمة لعبة التمثيل بدون كلام لعبة التحديات الجماعية تعتمد على الإيماءات بصمت وتظل اللعبة ممتعة ومتجددة بفضل الكلمات المتنوعة من فئات مختلفة.
-                    </p>
-                    
-
-                    <h3 class="faq-title" id="faqTitle">
-                        <i class="fas fa-circle-question"></i>
-                        أسئلة شائعة
-                    </h3>
-                    <div class="faq-grid" aria-label="أسئلة شائعة عن اللعبة">
-                        <div class="faq-card">
-                            <h4>كيف يتم اللعب؟</h4>
-                            <ul class="about-list">
-                                <li>ينقسم اللاعبون إلى فريقين.</li>
-                                <li>اختيار الفئات للعب.</li>
-                                <li>تناوب كل عضو على إيصال الكلمة لفريقه بدون كلام حتى يتمكنوا من تخمينها قبل انتهاء الوقت.</li>
-                            </ul>
-                        </div>
-                        <div class="faq-card">
-                            <h4>ما الفئات المتاحة؟</h4>
-                            <p>تتضمن الفئات مسرحيات وأفلام ومسلسلات وأغاني مع إضافة فئات جديدة باستمرار.</p>
-                        </div>
-                        <div class="faq-card">
-                            <h4>هل اللعبة مناسبة للجميع؟</h4>
-                            <p>نعم .. اللعبة مناسبة للعائلة والأصدقاء وتناسب الجلسات الجماعية والفعاليات البسيطة.</p>
-                        </div>
-                    </div>
+                <section class="seo-section" aria-label="أسئلة شائعة">
+                    <ul class="about-list" aria-label="أسئلة شائعة في نافذة مستقلة">
+                        <li>هل أحتاج حسابًا أو تسجيل دخول؟ لا. الموقع مصمم ليبدأ اللعب مباشرة، وكل ما تحتاجه هو اختيار الفرق والفئات المناسبة للجلسة.</li>
+                        <li>هل أستطيع اللعب بدون مؤقت؟ نعم. المؤقت اختياري ويمكن إيقافه بالكامل إذا كانت المجموعة تفضّل اللعب الهادئ بدون ضغط زمني.</li>
+                        <li>ما أفضل فئة للجلسات العائلية؟ غالبًا تبدأ المجموعات العائلية بالمسرحيات أو المسلسلات الخليجية، ثم تضيف الأغاني إذا أرادت جولات أسرع.</li>
+                        <li>هل يجب اختيار ست فئات؟ لا، يكفي اختيار فئة واحدة على الأقل.</li>
+                        <li>من الذي يشاهد الكلمة؟ اللاعب الذي رشحه فريقه للدور الحالي فقط، أما بقية فريقه فلا يشاهدونها.</li>
+                        <li>هل يمكن إكمال اللعب لاحقًا؟ بعض الإعدادات تُحفظ محليًا لتسهيل الاستئناف داخل نفس المتصفح.</li>
+                    </ul>
                 </section>
             </div>
         </div>
@@ -2562,26 +2588,50 @@
             "mainEntity": [
                 {
                     "@type": "Question",
-                    "name": "ما هي لعبة ولا كلمة؟",
+                    "name": "هل أحتاج حسابًا أو تسجيل دخول؟",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "هي لعبة تمثيل بدون كلام تعتمد على الإيماءات بصمت، وتنقسم إلى فريقين للتخمين قبل انتهاء الوقت."
+                        "text": "لا. الموقع مصمم ليبدأ اللعب مباشرة، وكل ما تحتاجه هو اختيار الفرق والفئات المناسبة للجلسة."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "ما الفئات المتاحة في اللعبة؟",
+                    "name": "هل أستطيع اللعب بدون مؤقت؟",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "تشمل فئات مثل مسرحيات وأفلام ومسلسلات وأغاني مع فئات أخرى متجددة."
+                        "text": "نعم. المؤقت اختياري ويمكن إيقافه بالكامل إذا كانت المجموعة تفضل اللعب الهادئ بدون ضغط زمني."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "كيف أفوز في اللعبة؟",
+                    "name": "ما أفضل فئة للجلسات العائلية؟",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "يفوز الفريق الذي يحقق أعلى نقاط عبر التخمين الصحيح للكلمات قبل انتهاء الوقت."
+                        "text": "غالبا تبدأ المجموعات العائلية بالمسرحيات أو المسلسلات الخليجية، ثم تضيف الأغاني إذا أرادت جولات أسرع."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "هل يجب اختيار ست فئات؟",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "لا، يكفي اختيار فئة واحدة على الأقل."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "من الذي يشاهد الكلمة؟",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "اللاعب الذي رشحه فريقه للدور الحالي فقط هو الذي يشاهد الكلمة، أما بقية فريقه فلا يشاهدونها."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "هل يمكن إكمال اللعب لاحقًا؟",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "بعض الإعدادات تحفظ محليًا لتسهيل الاستئناف داخل نفس المتصفح."
                     }
                 }
             ]
@@ -3032,15 +3082,15 @@
         // Loading Spinner
         const loadingSpinner = document.getElementById('loadingSpinner');
 
-        // About Modal Elements
-        const aboutOpenBtn = document.getElementById('aboutOpenBtn');
-        const aboutModal = document.getElementById('aboutModal');
+        // Footer and helper modals
+        const faqOpenBtn = document.getElementById('faqOpenBtn');
+        const faqModal = document.getElementById('faqModal');
+        const faqClose = document.getElementById('faqClose');
         const legalLinks = document.querySelectorAll('[data-legal-modal]');
         const legalModal = document.getElementById('legalModal');
         const legalModalTitle = document.getElementById('legalModalTitle');
         const legalModalText = document.getElementById('legalModalText');
         const legalModalClose = document.getElementById('legalModalClose');
-        const aboutClose = document.getElementById('aboutClose');
         const TIMER_SETTINGS_KEY = 'ActNoTalk_timer_settings';
         const GAME_COMPLETED_KEY = 'ActNoTalk_game_completed';
         const MIN_TIMER_SECONDS = 30;
@@ -3897,28 +3947,31 @@
             });
         }
 
-        // About Modal Event Listeners
-        if (aboutOpenBtn && aboutModal) {
-            aboutOpenBtn.addEventListener('click', () => {
-                aboutModal.classList.add('active');
+        if (faqOpenBtn && faqModal) {
+            faqOpenBtn.addEventListener('click', () => {
+                faqModal.classList.add('active');
             });
         }
 
-        if (aboutClose && aboutModal) {
-            aboutClose.addEventListener('click', () => {
-                aboutModal.classList.remove('active');
+        if (faqClose && faqModal) {
+            faqClose.addEventListener('click', () => {
+                faqModal.classList.remove('active');
             });
         }
 
-        if (aboutModal) {
-            aboutModal.addEventListener('click', (e) => {
-                if (e.target === aboutModal) {
-                    aboutModal.classList.remove('active');
+        if (faqModal) {
+            faqModal.addEventListener('click', (e) => {
+                if (e.target === faqModal) {
+                    faqModal.classList.remove('active');
                 }
             });
         }
 
         const legalModalContent = {
+            about: {
+                title: 'عن ActNoTalk',
+                text: 'ActNoTalk موقع عربي للعبة ولا كلمة يساعد على تنظيم الجولة واختيار الفئات وبدء اللعب بسرعة من صفحة واحدة.'
+            },
             privacy: {
                 title: 'سياسة الخصوصية',
                 text: 'توضح صفحة سياسة الخصوصية طريقة استخدام التخزين المحلي وملفات تعريف الارتباط وخدمات Google AdSense داخل الموقع.'
@@ -4036,8 +4089,8 @@
             
             // Escape to reset or close modal
             if (e.key === 'Escape') {
-                if (aboutModal && aboutModal.classList.contains('active')) {
-                    aboutModal.classList.remove('active');
+                if (faqModal && faqModal.classList.contains('active')) {
+                    faqModal.classList.remove('active');
                 } else if (legalModal && legalModal.classList.contains('active')) {
                     closeLegalModal();
                 } else if (settingsModal && settingsModal.classList.contains('active')) {
